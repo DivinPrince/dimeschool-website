@@ -40,7 +40,7 @@ export default function Hero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground mb-6 leading-[1.1]"
             >
               {hero.headline}{' '}
-              <span className="relative inline-flex items-center">
+              <span className="relative inline-block min-w-[200px] sm:min-w-[260px] lg:min-w-[300px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
@@ -48,7 +48,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className="relative text-primary"
+                    className="relative text-primary whitespace-nowrap"
                   >
                     {hero.rotatingWords[wordIndex]}
                     {/* Striped underline */}
