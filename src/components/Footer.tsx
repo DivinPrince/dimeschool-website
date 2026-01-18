@@ -148,16 +148,30 @@ export default function Footer() {
                 {category.title}
               </h3>
               <ul className="space-y-3">
-                {category.links.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
+                {category.links.map((link) => {
+                  const isExternal = link.href.startsWith('http');
+                  return (
+                    <li key={link.name}>
+                      {isExternal ? (
+                        <a 
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link 
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

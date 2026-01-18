@@ -1,159 +1,163 @@
 /**
- * Site Configuration Template
+ * DimeSchool Site Configuration
  * 
- * This file contains all customizable content for the website.
- * Update these values to personalize the site for your product/company.
+ * The Complete School Management Platform
  */
 
 export const siteConfig = {
   // Basic Site Info
-  name: "Your Company",
-  tagline: "Your Tagline Here",
-  description: "Your company description for SEO and meta tags. We deliver innovative technology solutions that drive growth and lasting impact.",
-  domain: "example.com",
+  name: "DimeSchool",
+  tagline: "The Complete School Management Platform",
+  description: "From enrollment to graduation, DimeSchool streamlines every aspect of school operations. One platform for administrators, teachers, parents, and students.",
+  domain: "dimeschool.com",
   
   // Contact Information
   contact: {
-    email: "hello@example.com",
-    phones: ["+1 234 567 8900", "+1 234 567 8901"],
+    email: "team@dime.rw",
+    phones: ["+250 798 579 079", "+250 729 355 090"],
     address: {
-      line1: "123 Innovation Street",
-      line2: "Tech City, TC 12345",
+      line1: "Kigali Innovation City",
+      line2: "Kigali, Rwanda",
     },
   },
   
   // Social Media Links (leave empty string to hide)
   social: {
-    linkedin: "https://linkedin.com/company/yourcompany",
-    twitter: "https://twitter.com/yourcompany",
-    instagram: "https://instagram.com/yourcompany",
-    youtube: "https://youtube.com/@yourcompany",
-    github: "https://github.com/yourcompany",
+    linkedin: "https://linkedin.com/company/dimeschool",
+    twitter: "https://twitter.com/dimeschool",
+    instagram: "",
+    youtube: "",
+    github: "",
   },
   
   // Hero Section
   hero: {
-    headline: "Transforming Ideas Into\nDigital Excellence",
-    subheadline: "We partner with forward-thinking organizations to deliver innovative technology solutions that drive growth, efficiency, and lasting impact.",
-    primaryCta: "Our Services",
-    secondaryCta: "Get In Touch",
+    headline: "Empower Your School",
+    rotatingWords: ["Digitally", "Seamlessly", "Efficiently", "Smarter"],
+    subheadline: "From enrollment to graduation, DimeSchool streamlines every aspect of school operations. One platform for administrators, teachers, parents, and students.",
+    primaryCta: "Get Started Free",
+    secondaryCta: "Schedule a Demo",
     stats: [
-      { number: "01", value: "2024", label: "Founded" },
-      { number: "02", value: "Global", label: "Reach" },
-      { number: "03", value: "Innovation", label: "Driven" },
+      { number: "01", value: "All-in-One", label: "Platform" },
+      { number: "02", value: "Real-Time", label: "Updates" },
+      { number: "03", value: "AI-Powered", label: "Marking" },
     ],
   },
   
   // Navigation
   navigation: {
-    links: ["Solutions", "Products", "Technology", "About"],
-    ctaText: "Get Started",
-    loginText: "Log In",
-    // Mega menu configuration for "Solutions" - customize in Navbar.tsx for full control
+    links: ["Features", "Pricing", "Integrations", "FAQ"],
+    ctaText: "Access Portal",
+    loginText: "Contact Us",
     megaMenu: {
       solutions: {
         featured: {
-          title: "Enterprise Suite",
-          description: "Complete digital transformation solution for large organizations with dedicated support.",
-          href: "#",
+          title: "MarkEase AI",
+          description: "Automate exam grading with our AI-powered marking engine. Upload answer papers, receive graded results in minutes.",
+          href: "#integrations",
         },
         items: [
-          { name: "Digital Transformation", description: "Modernize your business processes", href: "#", icon: "sparkles" },
-          { name: "Custom Development", description: "Tailored software solutions", href: "#", icon: "code" },
-          { name: "Cloud Services", description: "Scalable cloud infrastructure", href: "#", icon: "cloud" },
-          { name: "AI & Automation", description: "Intelligent process automation", href: "#", icon: "cpu" },
-          { name: "DevOps & Infrastructure", description: "Streamlined deployment pipelines", href: "#", icon: "server" },
-          { name: "Security & Compliance", description: "Enterprise-grade protection", href: "#", icon: "shield" },
+          { name: "For Administrators", description: "Complete school operations management", href: "#features", icon: "sparkles" },
+          { name: "For Teachers", description: "Class management and AI-powered marking", href: "#features", icon: "code" },
+          { name: "For Parents", description: "Real-time academic visibility", href: "#features", icon: "cloud" },
+          { name: "For Students", description: "Personal academic dashboard", href: "#features", icon: "cpu" },
+          { name: "Financial Operations", description: "Fee management and payment tracking", href: "#features", icon: "server" },
+          { name: "Data Security", description: "Enterprise-grade protection", href: "#features", icon: "shield" },
         ],
       },
     },
   },
   
-  // Manifesto / About Section
+  // Problem Section (used in Manifesto)
   manifesto: {
-    title: "What Is Your Company?",
-    quote: "Where bold ideas become intelligent realities.",
+    title: "Schools Are Drowning in Administrative Chaos",
+    quote: "One platform to connect everyone in your school community.",
     timeline: [
       {
-        year: "2024",
-        title: "The Genesis",
-        description: "Our company was founded with a vision to transform the digital landscape through cutting-edge technology solutions.",
+        year: "Problem",
+        title: "Paper-Based Chaos",
+        description: "Student records scattered across filing cabinets. Excel spreadsheets that break. Payment tracking in notebooks that get lost.",
       },
       {
-        year: "2025",
-        title: "Innovation & Growth",
-        description: "We expanded our team and capabilities, developing proprietary technologies and methodologies that set new standards.",
+        year: "Impact",
+        title: "Wasted Time & Resources",
+        description: "Hours wasted on manual processes. Frustrated staff. Confused parents. Students who fall through the cracks.",
       },
       {
-        year: "Today",
-        title: "The Future Is Now",
-        description: "We continue to push boundaries, creating intelligent solutions that bridge technology and creativity.",
+        year: "Solution",
+        title: "DimeSchool",
+        description: "A unified platform that connects everyone in your school community and automates the work that slows you down.",
       },
     ],
     principles: [
       {
-        title: "Mission",
-        description: "To revolutionize the digital landscape by creating intelligent solutions that empower businesses and individuals to achieve their full potential.",
+        title: "For Administrators",
+        description: "Maintain complete student records, smart enrollment, staff management, financial operations, and curriculum management all in one secure location.",
       },
       {
-        title: "Vision",
-        description: "A world where technology seamlessly integrates with human creativity, making digital transformation accessible, efficient, and impactful.",
+        title: "For Teachers",
+        description: "Class dashboards, assessment management, AI-powered marking with MarkEase integration, and student performance insights.",
       },
       {
-        title: "Values",
-        description: "Innovation, Excellence, Integrity, Collaboration, and Client-Centricity form the foundation of everything we do.",
+        title: "For Parents & Students",
+        description: "Real-time academic visibility, fee tracking, multi-child support, and personalized dashboards with detailed feedback.",
       },
     ],
     statements: [
-      "Build with purpose",
-      "Innovate without limits",
-      "Transform the ordinary into extraordinary",
+      "Eliminate administrative chaos",
+      "Give time back to teachers",
+      "Connect your entire school community",
     ],
-    founderMessage: "We started this company to bridge the gap between human creativity and technical execution. Our platform empowers visionaries to build what they imagine without the traditional barriers.",
+    founderMessage: "DimeSchool was built to solve the daily struggles that school administrators, teachers, and parents face. We believe schools should focus on education, not paperwork.",
   },
   
-  // Products/Services
+  // Features/Products
   products: [
     {
-      id: "digital-transformation",
-      name: "Digital Transformation",
-      tagline: "Enterprise Solutions",
-      description: "Comprehensive digital transformation services that help businesses evolve in the modern digital landscape.",
+      id: "administrators",
+      name: "For Administrators",
+      tagline: "Complete Operations Management",
+      description: "Manage every aspect of your school from student records to financial operations. Search any student in seconds, handle enrollments with drag-and-drop simplicity.",
       cta: "Learn More",
       features: [
-        "Business process optimization",
-        "Legacy system modernization",
-        "Cloud migration strategies",
-        "Digital workflow implementation",
-        "Technology stack assessment",
+        "Student Information Management",
+        "Smart Enrollment & Class Assignment",
+        "Staff & Role Management",
+        "Fee Management & Payment Tracking",
+        "Expense Management with Audit Trails",
+        "Program & Curriculum Management",
+        "Promotion & Graduation Workflows",
       ],
     },
     {
-      id: "software-development",
-      name: "Software Development",
-      tagline: "Custom Solutions",
-      description: "End-to-end software development services tailored to your specific business requirements and goals.",
-      cta: "Our Process",
+      id: "teachers",
+      name: "For Teachers",
+      tagline: "AI-Powered Teaching Tools",
+      description: "Everything you need to manage your classes and assessments. Create assessments, grade with AI assistance, and track student performance all in one place.",
+      cta: "Explore Features",
       features: [
-        "Web application development",
-        "Mobile app development",
-        "API integration services",
-        "UI/UX design and implementation",
-        "Quality assurance and testing",
+        "Class Dashboard with Student Overview",
+        "Assessment Management",
+        "AI-Powered Marking with MarkEase",
+        "Student Performance Insights",
+        "AI-Generated Study Recommendations",
+        "Results Management & Reports",
       ],
     },
     {
-      id: "tech-consulting",
-      name: "Tech Consulting",
-      tagline: "Strategic Advisory",
-      description: "Expert technology consulting to help you make informed decisions about your digital strategy.",
-      cta: "Get Advice",
+      id: "parents-students",
+      name: "For Parents & Students",
+      tagline: "Real-Time Visibility",
+      description: "Stay connected to academic progress. Parents see grades as soon as teachers publish them. Students track their performance and receive personalized feedback.",
+      cta: "See Portal",
       features: [
-        "Technology roadmap planning",
-        "IT infrastructure assessment",
-        "Security and compliance review",
-        "Vendor selection assistance",
-        "Digital strategy development",
+        "Real-Time Academic Visibility",
+        "Fee & Payment Tracking",
+        "Multi-Child Support",
+        "Direct Communication Channel",
+        "Personal Academic Dashboard",
+        "Assessment Results & Feedback",
+        "Enrollment History",
       ],
     },
   ],
@@ -167,160 +171,113 @@ export const siteConfig = {
     screenshots: string[];
   } | null,
   
-  // Team Members
-  team: [
-    {
-      name: "Divin Prince",
-      title: "Founder & CEO",
-      imageSrc: "/assets/team/1.png",
-      skills: ["Leadership", "Strategy", "Innovation"],
-      social: {
-        linkedin: "https://linkedin.com/in/divinprince",
-        twitter: "https://twitter.com/divinprince",
-      },
-    },
-  ],
+  // Team Members (empty since this is a product, not a company)
+  team: [] as {
+    name: string;
+    title: string;
+    imageSrc: string;
+    skills: string[];
+    social: {
+      linkedin?: string;
+      twitter?: string;
+    };
+  }[],
   
-  // Careers
-  careers: [
-    {
-      title: "Frontend Developer",
-      location: "Remote",
-      type: "Full-time",
-      description: "We're looking for a skilled Frontend Developer with experience in React, Next.js, and TypeScript to join our growing team.",
-      requirements: [
-        "3+ years of experience with React",
-        "Experience with Next.js and TypeScript",
-        "Strong UI/UX sensibilities",
-        "Excellent communication skills",
-      ],
-    },
-    {
-      title: "Backend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      description: "Join us as a Backend Engineer to build scalable and efficient server-side applications.",
-      requirements: [
-        "3+ years of experience with Node.js or similar",
-        "Experience with databases (SQL and NoSQL)",
-        "Knowledge of API design and implementation",
-        "Understanding of cloud services (AWS, Azure, or GCP)",
-      ],
-    },
-    {
-      title: "Product Designer",
-      location: "Remote",
-      type: "Full-time",
-      description: "We're seeking a creative Product Designer to craft beautiful, intuitive user experiences for our products.",
-      requirements: [
-        "Portfolio demonstrating UI/UX design skills",
-        "Experience with Figma or similar design tools",
-        "Understanding of user-centered design principles",
-        "Ability to work closely with development teams",
-      ],
-    },
-  ],
+  // Careers (empty - not needed for product)
+  careers: [] as {
+    title: string;
+    location: string;
+    type: string;
+    description: string;
+    requirements: string[];
+  }[],
   
   // Testimonials
   testimonials: [
     {
-      quote: "This team has transformed how we build software. What used to take months now happens in days, with better quality and fewer resources.",
-      author: "Alex Rivera",
-      role: "CTO",
-      company: "TechFront",
+      quote: "DimeSchool has transformed how we run our school. What used to take our admin team hours now takes minutes. Report cards that took weeks are now generated instantly.",
+      author: "Sarah Mensah",
+      role: "Principal",
+      company: "Horizon Academy",
     },
     {
-      quote: "As a startup founder with limited resources, their platform has been a game-changer. We've built our entire MVP in weeks instead of months.",
-      author: "Priya Sharma",
-      role: "Founder",
-      company: "InnovateLabs",
+      quote: "The MarkEase AI marking feature is a game-changer. I used to spend entire weekends grading papers. Now I can focus that time on actually teaching my students.",
+      author: "David Okonkwo",
+      role: "Senior Teacher",
+      company: "Unity Secondary School",
     },
     {
-      quote: "The level of innovation they bring to the table is unmatched. Their approach has completely revolutionized our development process.",
-      author: "Marcus Johnson",
-      role: "VP of Engineering",
-      company: "DataSphere",
+      quote: "As a parent of three children in different grades, having one dashboard to see all their progress is incredible. No more waiting for term reports - I see grades in real-time.",
+      author: "Amina Hassan",
+      role: "Parent",
+      company: "Riverside International",
     },
   ],
   
   // FAQ
   faq: [
     {
-      question: "What services do you offer?",
-      answer: "We offer comprehensive digital transformation, custom software development, and technology consulting services. Our team specializes in web and mobile applications, cloud solutions, and enterprise software.",
+      question: "Can I import existing student data?",
+      answer: "Yes. DimeSchool supports bulk import from Excel and CSV files. Our team can assist with data migration for larger schools.",
     },
     {
-      question: "How long does a typical project take?",
-      answer: "Project timelines vary based on scope and complexity. A simple web application might take 4-8 weeks, while larger enterprise solutions can take 3-6 months. We provide detailed timelines during our initial consultation.",
+      question: "Does DimeSchool work offline?",
+      answer: "The core platform requires an internet connection. We're developing offline capabilities for areas with limited connectivity.",
     },
     {
-      question: "Do you work with startups or only enterprises?",
-      answer: "We work with organizations of all sizes, from early-stage startups to Fortune 500 companies. Our flexible engagement models allow us to adapt our approach to meet your specific needs and budget.",
+      question: "Can parents access the system on mobile?",
+      answer: "Yes. The parent and student portals are fully responsive and work on any device with a web browser.",
     },
     {
-      question: "What technologies do you specialize in?",
-      answer: "We specialize in modern web technologies including React, Next.js, Node.js, Python, and cloud platforms like AWS and Google Cloud. We stay current with industry trends to deliver cutting-edge solutions.",
+      question: "How is student data protected?",
+      answer: "All data is encrypted in transit and at rest. We follow industry best practices for data security and comply with applicable data protection regulations.",
     },
     {
-      question: "How do you handle project communication?",
-      answer: "We believe in transparent, frequent communication. You'll have a dedicated project manager, regular status updates, and access to our project management tools. We adapt our communication style to your preferences.",
+      question: "Can we customize the grading system?",
+      answer: "Absolutely. DimeSchool supports custom grade scales, passing thresholds, and outcome labels for any curriculum standard.",
+    },
+    {
+      question: "What happens if we outgrow our plan?",
+      answer: "Upgrade anytime. Your data stays intact, and you gain immediate access to additional features.",
     },
   ],
   
-  // Blog/Insights
-  blog: [
-    {
-      title: "The Future of Digital Transformation",
-      excerpt: "Exploring how emerging technologies are reshaping the business landscape and what it means for your organization.",
-      date: "Jan 15, 2025",
-      category: "Technology",
-      link: "#",
-    },
-    {
-      title: "Building Scalable Systems: Best Practices",
-      excerpt: "Learn the key principles and patterns for building software systems that can grow with your business.",
-      date: "Jan 8, 2025",
-      category: "Engineering",
-      link: "#",
-    },
-    {
-      title: "Case Study: 70% Faster Time to Market",
-      excerpt: "How we helped a client dramatically reduce their development cycle and launch ahead of schedule.",
-      date: "Dec 20, 2024",
-      category: "Case Study",
-      link: "#",
-    },
-  ],
+  // Blog/Insights (empty - not needed)
+  blog: [] as {
+    title: string;
+    excerpt: string;
+    date: string;
+    category: string;
+    link: string;
+  }[],
   
   // Footer
   footer: {
-    description: "Empowering businesses with innovative technology solutions. We transform ideas into digital excellence.",
+    description: "The modern school management platform. From enrollment to graduation, we streamline every aspect of school operations.",
     links: [
       {
-        title: "Services",
+        title: "Product",
         links: [
-          { name: "Digital Transformation", href: "#" },
-          { name: "Software Development", href: "#" },
-          { name: "Tech Consulting", href: "#" },
-          { name: "Enterprise Solutions", href: "#" },
+          { name: "Features", href: "#features" },
+          { name: "Pricing", href: "#pricing" },
+          { name: "Integrations", href: "#integrations" },
+          { name: "FAQ", href: "#faq" },
         ],
       },
       {
-        title: "Resources",
+        title: "Portals",
         links: [
-          { name: "Documentation", href: "#" },
-          { name: "Blog", href: "#" },
-          { name: "Tutorials", href: "#" },
-          { name: "Case Studies", href: "#" },
+          { name: "School Portal", href: "https://school.dimeschool.tech" },
+          { name: "Teacher Portal", href: "https://teacher.dimeschool.tech" },
+          { name: "Parent Portal", href: "https://parent.dimeschool.tech" },
+          { name: "Student Portal", href: "https://student.dimeschool.tech" },
         ],
       },
       {
         title: "Company",
         links: [
-          { name: "About", href: "#" },
-          { name: "Careers", href: "#" },
-          { name: "Contact", href: "#" },
-          { name: "Press Kit", href: "#" },
+          { name: "Dime", href: "https://dime.rw" },
+          { name: "MarkEase", href: "https://markease.dime.rw" },
         ],
       },
       {
@@ -328,41 +285,34 @@ export const siteConfig = {
         links: [
           { name: "Privacy Policy", href: "#" },
           { name: "Terms of Service", href: "#" },
-          { name: "Cookie Policy", href: "#" },
-          { name: "Security", href: "#" },
         ],
       },
     ],
     newsletter: {
       enabled: true,
-      title: "Newsletter",
-      description: "Stay updated with our latest insights and announcements.",
+      title: "Stay Updated",
+      description: "Get notified about new features and school management tips.",
       placeholder: "Your email",
       buttonText: "Subscribe",
     },
   },
   
-  // Process Flow
+  // Process Flow - Getting Started
   processFlow: [
     {
       step: 1,
-      title: "Discover",
-      description: "Tell us what you need. We analyze your requirements and translate them into clear technical specifications.",
+      title: "Sign Up",
+      description: "Create your school account in under 2 minutes. No credit card required to start your free trial.",
     },
     {
       step: 2,
-      title: "Design",
-      description: "Our team creates optimized architectural designs and solutions tailored to your specific use case.",
+      title: "Set Up Your Structure",
+      description: "Import your students, create classes, and assign teachers. Use our bulk import tools or add manually.",
     },
     {
       step: 3,
-      title: "Develop",
-      description: "We build and test your solution across multiple environments to ensure reliability and performance.",
-    },
-    {
-      step: 4,
-      title: "Deploy",
-      description: "Your solution is deployed with proper scaling, monitoring, and continuous optimization support.",
+      title: "Go Live",
+      description: "Invite parents and students to their portals. Start managing your school the modern way.",
     },
   ],
 
@@ -370,67 +320,122 @@ export const siteConfig = {
   pricing: {
     label: "Pricing",
     title: "Simple, Transparent Pricing",
-    description: "Choose the plan that fits your needs. All plans include core features with no hidden fees.",
+    description: "Choose the plan that fits your school. All plans include core features with no hidden fees.",
     currency: "$",
-    note: "All prices are in USD. Taxes may apply based on your location.",
+    note: "Contact us for custom pricing for school networks.",
     plans: [
       {
         name: "Starter",
-        price: "49",
-        period: "month",
-        description: "Perfect for small teams and startups getting started.",
+        price: "Free",
+        period: "",
+        description: "For small schools getting organized.",
         features: [
-          "Up to 5 team members",
-          "10 GB storage",
-          "Basic analytics",
+          "Up to 200 students",
+          "Unlimited staff accounts",
+          "Student Information Management",
+          "Class & Enrollment Management",
+          "Basic Reporting",
           "Email support",
-          "API access",
         ],
-        cta: "Start Free Trial",
-        note: "14-day free trial, no credit card required",
+        cta: "Get Started Free",
+        note: "No credit card required",
       },
       {
-        name: "Professional",
-        price: "149",
-        period: "month",
-        description: "For growing businesses that need more power and flexibility.",
+        name: "Growth",
+        price: "Contact Us",
+        period: "",
+        description: "For schools ready to scale.",
         featured: true,
         badge: "Most Popular",
         features: [
-          "Up to 25 team members",
-          "100 GB storage",
-          "Advanced analytics & reports",
-          "Priority email & chat support",
-          "Full API access",
-          "Custom integrations",
-          "SSO authentication",
+          "Up to 1,000 students",
+          "Everything in Starter",
+          "Advanced Financial Reports",
+          "Fee Management & Payment Tracking",
+          "Priority support",
+          "MarkEase AI marking (limited)",
+          "Parent & Student Portals",
         ],
-        cta: "Start Free Trial",
-        note: "14-day free trial, no credit card required",
+        cta: "Contact Sales",
+        note: "",
       },
       {
         name: "Enterprise",
         price: "Custom",
-        description: "For large organizations with custom requirements and dedicated support.",
+        description: "For large schools and school networks.",
         features: [
-          "Unlimited team members",
-          "Unlimited storage",
-          "Custom analytics & dashboards",
-          "24/7 dedicated support",
-          "Full API access with higher limits",
-          "Custom integrations & workflows",
-          "SSO & advanced security",
-          "Dedicated account manager",
+          "Unlimited students",
+          "Everything in Growth",
+          "Custom integrations",
+          "Dedicated support",
+          "Unlimited MarkEase usage",
+          "Multi-school management",
+          "Custom training & onboarding",
           "SLA guarantee",
         ],
         cta: "Contact Sales",
       },
     ],
     enterpriseCta: {
-      title: "Need a custom solution?",
-      description: "Get in touch with our sales team to discuss your specific requirements and get a tailored quote for your organization.",
+      title: "Ready to Transform Your School?",
+      description: "Join hundreds of schools that have eliminated administrative chaos and given time back to teachers.",
       cta: "Talk to Sales",
     },
+  },
+  
+  // Why Choose DimeSchool (additional config for new section)
+  whyChoose: [
+    {
+      title: "Multi-Program Support",
+      description: "Run primary school, secondary school, and technical programs on the same platform with their own curriculum structure.",
+    },
+    {
+      title: "Flexible Academic Structures",
+      description: "Support any curriculum model: traditional grades, subject combinations, electives, and custom grading scales.",
+    },
+    {
+      title: "Role-Based Access Control",
+      description: "Define exactly who can see and do what. Create custom roles for headmasters, department heads, accountants, and more.",
+    },
+    {
+      title: "Data Security & Privacy",
+      description: "Student data stays secure with encryption at rest and in transit. Full audit logs track every change.",
+    },
+    {
+      title: "Library Management",
+      description: "Track books, borrowings, and returns. Know which students have overdue materials without additional software.",
+    },
+  ],
+  
+  // Portals
+  portals: [
+    {
+      name: 'School Portal',
+      description: 'Complete school administration and management dashboard.',
+      href: 'https://school.dimeschool.tech',
+    },
+    {
+      name: 'Teacher Portal',
+      description: 'Manage classes, assessments, and AI-powered grading.',
+      href: 'https://teacher.dimeschool.tech',
+    },
+    {
+      name: 'Parent Portal',
+      description: 'Track your children\'s academic progress and fees.',
+      href: 'https://parent.dimeschool.tech',
+    },
+    {
+      name: 'Student Portal',
+      description: 'View your grades, assessments, and academic history.',
+      href: 'https://student.dimeschool.tech',
+    },
+  ],
+
+  // Integrations
+  integrations: {
+    title: "MarkEase AI Marking",
+    description: "Automate exam grading with our AI-powered marking engine. Upload answer papers, receive graded results with detailed feedback in minutes. Teachers review and approve, saving hours every assessment cycle.",
+    cta: "Learn more about MarkEase",
   },
 };
 

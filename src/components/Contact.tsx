@@ -88,7 +88,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <form className="border border-border rounded-2xl p-8">
+            <form className="bg-background border border-border rounded-2xl p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label htmlFor="name" className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">

@@ -2,15 +2,14 @@ import Hero from '../components/Hero';
 import DiagonalStripes from '../components/DiagonalStripes';
 import Footer from '../components/Footer';
 import Manifesto from '../components/Manifesto';
-import CoreProducts from '../components/CoreProducts';
-import TeamCards from '../components/TeamCards';
+import Features from '../components/Features';
 import ProcessFlow from '../components/ProcessFlow';
-import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
-import BlogInsights from '../components/BlogInsights';
-import Careers from '../components/Careers';
 import Contact from '../components/Contact';
 import Pricing from '../components/Pricing';
+import Integrations from '../components/Integrations';
+import WhyChoose from '../components/WhyChoose';
+import Portals from '../components/Portals';
 
 export default function Home() {  
   return (
@@ -20,22 +19,22 @@ export default function Home() {
       
       <DiagonalStripes />
 
-      {/* Products/Services */}
-      <CoreProducts />
-      
-      <DiagonalStripes />
-      
-      {/* Team */}
-      <TeamCards />
-      
-      <DiagonalStripes />
-
-      {/* About Us - Manifesto */}
+      {/* The Problem & Solution */}
       <Manifesto />
       
       <DiagonalStripes />
+
+      {/* Features for different users */}
+      <Features />
       
-      {/* How It Works Process */}
+      <DiagonalStripes />
+      
+      {/* Why Schools Choose DimeSchool */}
+      <WhyChoose />
+      
+      <DiagonalStripes />
+      
+      {/* How It Works - Getting Started */}
       <ProcessFlow />
       
       <DiagonalStripes />
@@ -45,26 +44,17 @@ export default function Home() {
       
       <DiagonalStripes />
       
-      {/* Testimonials */}
-      <Testimonials />
-      
-      <DiagonalStripes />
-      
-      {/* Blog/Insights */}
-      <BlogInsights />
-      
-      <DiagonalStripes />
-      
-      {/* Careers */}
-      <Careers />
+      {/* Integrations - MarkEase */}
+      <Integrations />
       
       <DiagonalStripes />
       
       {/* FAQ */}
       <FAQ />
       
-      <DiagonalStripes />
-      
+      {/* Portals */}
+      <Portals />
+
       {/* Contact */}
       <Contact />
       

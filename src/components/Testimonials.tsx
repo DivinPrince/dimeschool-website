@@ -97,9 +97,9 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-12">Trusted By</p>
+          <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-12">Trusted By Schools</p>
           <div className="flex flex-wrap justify-center gap-16">
-            {['TechCorp', 'InnovateAI', 'FutureWorks', 'NextGen', 'QuantumTech'].map((company) => (
+            {['Uumwe Community Center', 'Kigali Christian School', 'La Promise', 'Saint Jean Paul'].map((company) => (
               <div
                 key={company}
                 className="text-muted-foreground font-light text-lg uppercase tracking-widest hover:text-foreground transition-colors"

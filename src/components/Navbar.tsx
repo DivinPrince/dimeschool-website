@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { 
   SparklesIcon, 
-  CodeBracketIcon, 
-  ServerIcon,
-  CpuChipIcon,
-  CloudIcon,
+  UserGroupIcon, 
+  AcademicCapIcon,
+  UsersIcon,
+  CurrencyDollarIcon,
   ShieldCheckIcon,
   ArrowRightIcon
 } from '@heroicons/react/24/outline';
@@ -44,67 +44,67 @@ type NavItem = NavItemWithSub | NavItemSimple;
 
 const navigationItems: NavItem[] = [
   {
-    name: 'Solutions',
+    name: 'Features',
     hasSubmenu: true,
     featured: {
-      title: 'Enterprise Suite',
-      description: 'Complete digital transformation solution for large organizations with dedicated support.',
+      title: 'MarkEase AI',
+      description: 'Automate exam grading with our AI-powered marking engine. Upload answer papers, receive graded results in minutes.',
       image: '/og-image.png',
-      href: '#',
+      href: '#integrations',
     },
     items: [
       {
-        name: 'Digital Transformation',
-        description: 'Modernize your business processes',
-        href: '#',
+        name: 'For Schools',
+        description: 'Complete administration dashboard',
+        href: '#portals',
         icon: SparklesIcon,
       },
       {
-        name: 'Custom Development',
-        description: 'Tailored software solutions',
-        href: '#',
-        icon: CodeBracketIcon,
+        name: 'For Teachers',
+        description: 'Class management & AI grading',
+        href: '#portals',
+        icon: AcademicCapIcon,
       },
       {
-        name: 'Cloud Services',
-        description: 'Scalable cloud infrastructure',
-        href: '#',
-        icon: CloudIcon,
+        name: 'For Parents',
+        description: 'Track academic progress and fees',
+        href: '#portals',
+        icon: UsersIcon,
       },
       {
-        name: 'AI & Automation',
-        description: 'Intelligent process automation',
-        href: '#',
-        icon: CpuChipIcon,
+        name: 'For Students',
+        description: 'View grades and assessments',
+        href: '#portals',
+        icon: UserGroupIcon,
       },
       {
-        name: 'DevOps & Infrastructure',
-        description: 'Streamlined deployment pipelines',
-        href: '#',
-        icon: ServerIcon,
+        name: 'Financial Management',
+        description: 'Fee tracking and payments',
+        href: '#features',
+        icon: CurrencyDollarIcon,
       },
       {
-        name: 'Security & Compliance',
+        name: 'Data Security',
         description: 'Enterprise-grade protection',
-        href: '#',
+        href: '#features',
         icon: ShieldCheckIcon,
       },
     ],
   },
   {
-    name: 'Products',
+    name: 'Pricing',
     hasSubmenu: false,
-    href: '#',
+    href: '#pricing',
   },
   {
-    name: 'Technology',
+    name: 'Integrations',
     hasSubmenu: false,
-    href: '#',
+    href: '#integrations',
   },
   {
-    name: 'About',
+    name: 'FAQ',
     hasSubmenu: false,
-    href: '#',
+    href: '#faq',
   },
 ];
 
@@ -197,30 +197,25 @@ export default function Navbar() {
                             </div>
                           </div>
 
-                          {/* Featured Visual Side */}
+                          {/* Featured - MarkEase AI */}
                           {item.featured && (
-                            <div className="col-span-5 bg-muted p-6 border-l border-border">
-                              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                                Featured
-                              </div>
+                            <div className="col-span-5 bg-muted/50 p-6 border-l border-border">
                               <a href={item.featured.href} className="group block">
-                                <div className="aspect-video bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-xl border border-border overflow-hidden mb-4 relative">
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                                      <SparklesIcon className="w-8 h-8 text-primary" />
-                                    </div>
+                                <div className="flex items-center gap-3 mb-4">
+                                  <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                                    <SparklesIcon className="w-5 h-5 text-primary-foreground" />
                                   </div>
-                                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                                  <div>
+                                    <div className="text-sm font-medium text-foreground">{item.featured.title}</div>
+                                    <div className="text-xs text-muted-foreground">AI-Powered Grading</div>
+                                  </div>
                                 </div>
-                                <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors mb-1">
-                                  {item.featured.title}
-                                </h4>
-                                <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
+                                <p className="text-sm text-muted-foreground mb-4">
                                   {item.featured.description}
                                 </p>
-                                <div className="flex items-center text-xs font-medium text-primary">
+                                <div className="flex items-center text-sm font-medium text-primary">
                                   Learn more
-                                  <ArrowRightIcon className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                                  <ArrowRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                 </div>
                               </a>
                             </div>
@@ -252,13 +247,13 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center space-x-4">
             <ThemeToggle />
             <a
-              href="#"
+              href="#contact"
               className="text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
             >
               {navigation.loginText}
             </a>
             <a
-              href="#"
+              href="#portals"
               className="px-6 py-2 text-sm font-medium text-primary-foreground bg-primary border border-border rounded-xl hover:bg-primary/90 transition-colors"
             >
               {navigation.ctaText}
@@ -348,14 +343,16 @@ export default function Navbar() {
               ))}
               <div className="pt-4 space-y-2 border-t border-border">
                 <a
-                  href="#"
+                  href="#contact"
                   className="block py-3 text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {navigation.loginText}
                 </a>
                 <a
-                  href="#"
+                  href="#portals"
                   className="block px-6 py-3 text-sm font-medium text-center text-primary-foreground bg-primary border border-border rounded-xl hover:bg-primary/90 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {navigation.ctaText}
                 </a>
