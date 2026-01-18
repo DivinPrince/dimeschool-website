@@ -150,7 +150,7 @@ export default function Navbar() {
                   </button>
                 ) : (
                   <a
-                    href={item.href}
+                    href={'href' in item ? item.href : '#'}
                     className="px-4 py-2 text-sm font-medium text-foreground hover:text-muted-foreground transition-colors rounded-lg hover:bg-muted block"
                   >
                     {item.name}
@@ -332,7 +332,7 @@ export default function Navbar() {
                     </div>
                   ) : (
                     <a
-                      href={item.href}
+                      href={'href' in item ? item.href : '#'}
                       className="block py-3 text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
