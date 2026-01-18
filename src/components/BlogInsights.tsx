@@ -66,7 +66,7 @@ export default function BlogInsights() {
                 <div className="flex items-center text-xs text-muted-foreground mb-4">
                   <span>{post.date}</span>
                   <span className="mx-2">·</span>
-                  <span>{post.readTime}</span>
+                  <span>{post.category}</span>
                 </div>
                 
                 <h3 className="text-xl font-light text-foreground mb-4 line-clamp-2 group-hover:text-muted-foreground transition-colors">
