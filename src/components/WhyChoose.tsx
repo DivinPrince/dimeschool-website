@@ -64,11 +64,11 @@ export default function WhyChoose() {
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-background rounded-2xl p-6 text-center">
-                  <div className="text-4xl font-semibold text-foreground mb-2">500+</div>
+                  <div className="text-4xl font-semibold text-foreground mb-2">5+</div>
                   <div className="text-sm text-muted-foreground">Schools</div>
                 </div>
                 <div className="bg-background rounded-2xl p-6 text-center">
-                  <div className="text-4xl font-semibold text-foreground mb-2">50K+</div>
+                  <div className="text-4xl font-semibold text-foreground mb-2">500+</div>
                   <div className="text-sm text-muted-foreground">Students</div>
                 </div>
                 <div className="bg-background rounded-2xl p-6 text-center">
