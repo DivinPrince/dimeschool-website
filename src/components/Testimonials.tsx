@@ -3,113 +3,77 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../config/site.config';
+import { DoodleBrush, DoodleBurst, DoodleSquiggle } from './Doodles';
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const testimonials = siteConfig.testimonials.map((t, idx) => ({ ...t, id: idx + 1 }));
+  const testimonials = siteConfig.testimonials;
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (testimonials.length === 0) return;
-    
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 8000);
-    
-    return () => clearInterval(interval);
+    if (!testimonials.length) return;
+
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 7000);
+
+    return () => clearInterval(timer);
   }, [testimonials.length]);
-  
-  if (testimonials.length === 0) {
+
+  if (!testimonials.length) {
     return null;
   }
 
+  const current = testimonials[active];
+
   return (
-    <section className="relative py-32 bg-muted transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-24">
-          <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Testimonials</div>
-          <h2 className="text-4xl md:text-5xl font-light text-foreground">What Clients Say</h2>
-          <div className="w-16 h-[1px] bg-border mt-8" />
+    <section className="relative overflow-hidden py-24" id="testimonials">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Real Schools</p>
+          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">What educators say after switching</h2>
+          <DoodleBrush className="mx-auto mt-2 h-4 w-32" />
         </div>
 
-        {/* Testimonial Slider */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative min-h-[400px]">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                className="border border-border rounded-2xl p-12"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: index === currentIndex ? 1 : 0,
-                }}
-                transition={{ duration: 0.5 }}
-                style={{ 
-                  position: index === currentIndex ? 'relative' : 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                }}
-              >
-                {/* Quote */}
-                <p className="text-2xl font-light text-muted-foreground mb-12 leading-relaxed">
-                  "{testimonial.quote}"
-                </p>
-                
-                {/* Author Info */}
-                <div className="flex items-center justify-between pt-8 border-t border-border">
-                  <div>
-                    <div className="text-sm font-medium text-foreground mb-1">{testimonial.author}</div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                      {testimonial.role}, {testimonial.company}
-                    </div>
-                  </div>
-                  <div className="w-12 h-12 border border-border rounded-xl flex items-center justify-center text-foreground font-light">
-                    {testimonial.author.charAt(0)}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        <motion.div
+          key={current.author}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25 }}
+          className="relative mt-10 rounded-[2rem] border border-border/80 bg-white p-8 text-center shadow-md"
+        >
+          <DoodleBurst className="pointer-events-none absolute left-1/2 top-5 hidden h-8 w-8 -translate-x-[240%] lg:block" />
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-xl font-bold text-primary">
+            {current.author
+              .split(' ')
+              .map((part) => part[0])
+              .join('')
+              .slice(0, 2)}
           </div>
-          
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-12 space-x-3">
-            {testimonials.map((_, index) => (
+          <p className="text-xl leading-relaxed text-foreground md:text-2xl">“{current.quote}”</p>
+          <DoodleSquiggle className="pointer-events-none mx-auto mt-2 hidden h-8 w-24 lg:block" />
+          <p className="mt-6 text-base font-semibold text-foreground">{current.author}</p>
+          <p className="text-sm text-muted-foreground">{current.role}, {current.company}</p>
+
+          <div className="mt-6 flex justify-center gap-2">
+            {testimonials.map((testimonial, index) => (
               <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-foreground w-8' 
-                    : 'bg-muted-foreground/30 w-2'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                key={testimonial.author}
+                onClick={() => setActive(index)}
+                className={`h-2.5 rounded-full transition-all ${index === active ? 'w-8 bg-primary' : 'w-2.5 bg-border'}`}
+                aria-label={`Show testimonial from ${testimonial.author}`}
               />
             ))}
           </div>
-        </div>
-
-        {/* Trusted By */}
-        <motion.div
-          className="mt-32 pt-16 border-t border-border"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-12">Trusted By Schools</p>
-          <div className="flex flex-wrap justify-center gap-16">
-            {['Uumwe Community Center', 'Kigali Christian School', 'La Promise', 'Saint Jean Paul'].map((company) => (
-              <div
-                key={company}
-                className="text-muted-foreground font-light text-lg uppercase tracking-widest hover:text-foreground transition-colors"
-              >
-                {company}
-              </div>
-            ))}
-          </div>
         </motion.div>
+
+        <div className="mt-8 grid gap-3 rounded-3xl border border-border/80 bg-muted/55 p-4 text-center sm:grid-cols-4 sm:text-left">
+          {['Uumwe Community Center', 'Kigali Christian School', 'La Promise', 'Saint Jean Paul'].map((school) => (
+            <div key={school} className="rounded-xl bg-white px-3 py-3 text-sm font-semibold text-foreground">
+              {school}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-} 
+}
