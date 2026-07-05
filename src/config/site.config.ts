@@ -4,6 +4,9 @@
  * The Complete School Management Platform
  */
 
+// Android APK served by the DimeSchool OTA Worker (dimeschool repo, apps/ota).
+const ANDROID_APK_URL = "https://dimeschool-ota.dimerw.workers.dev/download/dimeschool.apk";
+
 export const siteConfig = {
   // Basic Site Info
   name: "DimeSchool",
@@ -37,6 +40,8 @@ export const siteConfig = {
     subheadline: "From enrollment to graduation, DimeSchool streamlines every aspect of school operations. One platform for administrators, teachers, parents, and students.",
     primaryCta: "Get Started Free",
     secondaryCta: "Schedule a Demo",
+    downloadCta: "Download the App",
+    downloadUrl: ANDROID_APK_URL,
     stats: [
       { number: "01", value: "All-in-One", label: "Platform" },
       { number: "02", value: "Real-Time", label: "Updates" },
@@ -226,7 +231,7 @@ export const siteConfig = {
     },
     {
       question: "Can parents access the system on mobile?",
-      answer: "Yes. The parent and student portals are fully responsive and work on any device with a web browser.",
+      answer: "Yes. Every portal is fully responsive in any mobile browser, and there's a free DimeSchool Android app that bundles all portals in one place.",
     },
     {
       question: "How is student data protected?",
@@ -271,6 +276,7 @@ export const siteConfig = {
           { name: "Teacher Portal", href: "https://teacher.dimeschool.tech" },
           { name: "Parent Portal", href: "https://parent.dimeschool.tech" },
           { name: "Student Portal", href: "https://student.dimeschool.tech" },
+          { name: "Android App", href: ANDROID_APK_URL },
         ],
       },
       {
@@ -412,6 +418,15 @@ export const siteConfig = {
       href: 'https://student.dimeschool.tech',
     },
   ],
+
+  // Mobile App (shown under the portals grid)
+  mobileApp: {
+    title: "Take DimeSchool everywhere",
+    description: "Every portal in one Android app — with instant over-the-air updates, so you always run the latest version.",
+    cta: "Download for Android",
+    note: "Free APK · Android 7.0+",
+    href: ANDROID_APK_URL,
+  },
 
   // Integrations
   integrations: {

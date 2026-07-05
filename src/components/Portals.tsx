@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { AcademicCapIcon, UsersIcon, BuildingLibraryIcon, UserIcon, ArrowTopRightOnSquareIcon, PlayCircleIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, UsersIcon, BuildingLibraryIcon, UserIcon, ArrowTopRightOnSquareIcon, PlayCircleIcon, DevicePhoneMobileIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
 import { DoodleBrush } from './Doodles';
 
@@ -16,6 +16,7 @@ const tones = ['bg-chart-2/12', 'bg-primary/10', 'bg-accent/30', 'bg-chart-4/25'
 
 export default function Portals() {
   const portals = siteConfig.portals;
+  const mobileApp = siteConfig.mobileApp;
 
   return (
     <section id="portals" className="relative overflow-hidden py-24">
@@ -69,6 +70,34 @@ export default function Portals() {
             );
           })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="mt-6 flex flex-col items-center justify-between gap-5 rounded-3xl border border-border/80 bg-primary/5 p-6 text-center sm:flex-row sm:text-left"
+        >
+          <div className="flex items-center gap-4">
+            <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm sm:inline-flex">
+              <DevicePhoneMobileIcon className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-foreground">{mobileApp.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{mobileApp.description}</p>
+            </div>
+          </div>
+          <div className="shrink-0">
+            <a
+              href={mobileApp.href}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/25 transition-transform hover:-translate-y-0.5"
+            >
+              <ArrowDownTrayIcon className="h-4 w-4" />
+              {mobileApp.cta}
+            </a>
+            <p className="mt-2 text-center text-xs text-muted-foreground">{mobileApp.note}</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
