@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
 import { DoodleArrow, DoodleBurst, DoodleWave } from './Doodles';
 
@@ -78,6 +78,13 @@ export default function Hero() {
               className="inline-flex items-center justify-center rounded-full border border-border bg-white px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
             >
               Explore Platform
+            </a>
+            <a
+              href={hero.downloadUrl}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+            >
+              <DevicePhoneMobileIcon className="h-4 w-4 text-primary" />
+              {hero.downloadCta}
             </a>
           </div>
 
