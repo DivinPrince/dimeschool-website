@@ -1,79 +1,95 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../config/site.config';
-import { DoodleBrush, DoodleBurst, DoodleSquiggle } from './Doodles';
+import { ChapterHead, Mark } from './Chapter';
+import { CanvasZoom, MaskReveal } from './motion/Motion';
+import Snapshot from './graphics/Snapshot';
+
+const schools = ['Uumwe Community Center', 'Kigali Christian School', 'La Promise', 'Saint Jean Paul'];
+const accentColors = ['bg-yellow', 'bg-blue', 'bg-green'];
 
 export default function Testimonials() {
   const testimonials = siteConfig.testimonials;
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    if (!testimonials.length) return;
-
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % testimonials.length);
-    }, 7000);
-
-    return () => clearInterval(timer);
-  }, [testimonials.length]);
 
   if (!testimonials.length) {
     return null;
   }
 
-  const current = testimonials[active];
-
   return (
-    <section className="relative overflow-hidden py-24" id="testimonials">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Real Schools</p>
-          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">What educators say after switching</h2>
-          <DoodleBrush className="mx-auto mt-2 h-4 w-32" />
-        </div>
+    <section
+      className="relative px-4 py-6 sm:px-6 lg:px-6 lg:py-8"
+      id="testimonials"
+      data-chapter="N.007 · Real Schools"
+    >
+      <CanvasZoom className="bg-foreground px-5 py-16 text-background sm:px-8 lg:px-12 lg:py-24">
+        <ChapterHead number="N.007" label="Real Schools" right="After switching" />
 
-        <motion.div
-          key={current.author}
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25 }}
-          className="relative mt-10 rounded-[2rem] border border-border/80 bg-white p-8 text-center shadow-md"
-        >
-          <DoodleBurst className="pointer-events-none absolute left-1/2 top-5 hidden h-8 w-8 -translate-x-[240%] lg:block" />
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-xl font-bold text-primary">
-            {current.author
-              .split(' ')
-              .map((part) => part[0])
-              .join('')
-              .slice(0, 2)}
-          </div>
-          <p className="text-xl leading-relaxed text-foreground md:text-2xl">“{current.quote}”</p>
-          <DoodleSquiggle className="pointer-events-none mx-auto mt-2 hidden h-8 w-24 lg:block" />
-          <p className="mt-6 text-base font-semibold text-foreground">{current.author}</p>
-          <p className="text-sm text-muted-foreground">{current.role}, {current.company}</p>
+        <MaskReveal className="mt-10">
+          <h2 className="chapter-title max-w-4xl">
+            Real schools. <Mark tone="yellow">Real words.</Mark>
+          </h2>
+        </MaskReveal>
 
-          <div className="mt-6 flex justify-center gap-2">
-            {testimonials.map((testimonial, index) => (
-              <button
-                key={testimonial.author}
-                onClick={() => setActive(index)}
-                className={`h-2.5 rounded-full transition-all ${index === active ? 'w-8 bg-primary' : 'w-2.5 bg-border'}`}
-                aria-label={`Show testimonial from ${testimonial.author}`}
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        <div className="mt-8 grid gap-3 rounded-3xl border border-border/80 bg-muted/55 p-4 text-center sm:grid-cols-4 sm:text-left">
-          {['Uumwe Community Center', 'Kigali Christian School', 'La Promise', 'Saint Jean Paul'].map((school) => (
-            <div key={school} className="rounded-xl bg-white px-3 py-3 text-sm font-semibold text-foreground">
-              {school}
-            </div>
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {testimonials.map((testimonial, index) => (
+            <motion.article
+              key={testimonial.author}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col overflow-hidden rounded-2xl bg-card text-foreground"
+            >
+              <span className={`h-1.5 w-full ${accentColors[index % accentColors.length]}`} />
+              <div className="flex flex-1 flex-col p-7">
+                <p className="font-display flex-1 text-lg font-bold leading-snug tracking-[-0.01em]">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <div className="mt-6 border-t border-border pt-4">
+                  <p className="text-sm font-bold">{testimonial.author}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.role}, {testimonial.company}
+                  </p>
+                </div>
+              </div>
+            </motion.article>
           ))}
         </div>
-      </div>
+
+        <div className="mx-auto mt-16 grid max-w-3xl items-center gap-8 sm:grid-cols-[1fr_auto]">
+          <div>
+            <p className="font-display text-[clamp(1.4rem,2.6vw,2rem)] font-extrabold leading-tight tracking-[-0.01em]">
+              This is what the saved hours are for.
+            </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-background/70">
+              Less time on registers, receipts, and red pens. More time in front of learners.
+            </p>
+          </div>
+          <Snapshot
+            src="/assets/photos/students-joy.jpg"
+            alt="Students laughing together outside their classroom"
+            caption="More time for this."
+            sub="The whole point"
+            className="w-64 sm:w-72"
+            sizes="288px"
+          />
+        </div>
+
+        <div className="mt-16 flex flex-wrap items-baseline gap-x-10 gap-y-4 border-t border-background/25 pt-6">
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-background/60">
+            Trusted by
+          </span>
+          {schools.map((school) => (
+            <span
+              key={school}
+              className="font-display text-base font-bold tracking-[-0.01em] text-background/85"
+            >
+              {school}
+            </span>
+          ))}
+        </div>
+      </CanvasZoom>
     </section>
   );
 }

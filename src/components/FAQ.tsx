@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
-import { DoodleBrush, DoodleSquiggle } from './Doodles';
-
-const audienceTags = ['Admins', 'Teachers', 'Parents'];
+import { ChapterHead, Mark } from './Chapter';
+import { MaskReveal } from './motion/Motion';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -17,78 +17,73 @@ export default function FAQ() {
   }
 
   return (
-    <section className="relative overflow-hidden py-24" id="faq">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">FAQ</p>
-          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">Questions schools ask before launch</h2>
-          <DoodleBrush className="mt-2 h-4 w-32" />
-        </div>
+    <section className="relative py-14 lg:py-20" id="faq" data-chapter="N.008 · Questions">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <ChapterHead number="N.008" label="Questions" right="Before launch" />
 
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-3">
+        <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+          <div>
+            <MaskReveal>
+              <h2 className="chapter-title">
+                <Mark tone="blue">FAQ</Mark>
+              </h2>
+            </MaskReveal>
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
+              Share your school structure and we will map the migration, setup timeline, and portal
+              rollout with your team. Response in under 24 hours on weekdays; live demos run 30
+              minutes with Q&amp;A.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-7 inline-flex rounded-full bg-foreground px-6 py-3.5 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
+            >
+              Talk to our team
+            </Link>
+          </div>
+
+          <div className="border-t-2 border-foreground/80">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
-                <motion.article
-                  key={faq.question}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.04 }}
-                  className="overflow-hidden rounded-2xl border border-border/80 bg-white"
-                >
+                <article key={faq.question} className="border-b-2 border-foreground/80">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
+                    aria-expanded={isOpen}
+                    className="flex w-full items-baseline gap-5 py-6 text-left"
                   >
-                    <div>
-                      <span className="mb-2 inline-flex rounded-full bg-muted px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
-                        {audienceTags[index % audienceTags.length]}
-                      </span>
-                      <p className="text-base font-semibold text-foreground">{faq.question}</p>
-                    </div>
-                    <ChevronDownIcon className={`h-5 w-5 text-foreground transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    <span className="font-mono text-[11px] tracking-[0.1em] text-muted-foreground">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <p className="font-display flex-1 text-lg font-bold tracking-[-0.01em] text-foreground lg:text-xl">
+                      {faq.question}
+                    </p>
+                    <PlusIcon
+                      className={`h-6 w-6 shrink-0 self-center stroke-[2.5] text-primary transition-transform duration-200 ${
+                        isOpen ? 'rotate-45' : ''
+                      }`}
+                    />
                   </button>
 
-                  <AnimatePresence>
+                  <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden border-t border-border/80"
+                        transition={{ duration: 0.22 }}
+                        className="overflow-hidden"
                       >
-                        <p className="px-5 py-4 text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
+                        <p className="max-w-2xl pb-6 pl-11 text-[15px] leading-relaxed text-muted-foreground">
+                          {faq.answer}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.article>
+                </article>
               );
             })}
           </div>
-
-          <aside className="relative rounded-[2rem] border border-primary/20 bg-primary/5 p-6">
-            <h3 className="text-2xl font-semibold text-foreground">Still have questions?</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Share your school structure and we will map the migration, setup timeline, and portal rollout with your team.
-            </p>
-            <div className="mt-5 space-y-3 rounded-2xl border border-border/70 bg-white p-4">
-              <p className="text-sm font-semibold text-foreground">Response time</p>
-              <p className="text-sm text-muted-foreground">Under 24 hours on weekdays</p>
-              <p className="text-sm font-semibold text-foreground">Live demo duration</p>
-              <p className="text-sm text-muted-foreground">30 minutes with Q&A</p>
-            </div>
-            <a
-              href="#contact"
-              className="mt-5 inline-flex rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-            >
-              Talk to our team
-            </a>
-            <DoodleSquiggle className="pointer-events-none absolute bottom-6 right-6 hidden h-10 w-16 rotate-[6deg] lg:block" />
-          </aside>
         </div>
       </div>
     </section>

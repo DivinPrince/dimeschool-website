@@ -11,7 +11,7 @@ export const siteConfig = {
   // Basic Site Info
   name: "DimeSchool",
   tagline: "The Complete School Management Platform",
-  description: "From enrollment to graduation, DimeSchool streamlines every aspect of school operations. One platform for administrators, teachers, parents, and students.",
+  description: "The school management platform with MarkEase AI marking built in. From enrollment to graduation, DimeSchool streamlines every aspect of school operations for administrators, teachers, parents, and students.",
   domain: "dimeschool.com",
   
   // Contact Information
@@ -37,15 +37,15 @@ export const siteConfig = {
   hero: {
     headline: "Empower Your School",
     rotatingWords: ["Digitally", "Seamlessly", "Efficiently", "Smarter"],
-    subheadline: "From enrollment to graduation, DimeSchool streamlines every aspect of school operations. One platform for administrators, teachers, parents, and students.",
+    subheadline: "The only school platform with MarkEase AI marking built in. DimeSchool runs your whole school, from enrollment and fees to attendance and communication, while MarkEase grades the papers in minutes, not weekends.",
     primaryCta: "Get Started Free",
     secondaryCta: "Schedule a Demo",
     downloadCta: "Download the App",
     downloadUrl: ANDROID_APK_URL,
     stats: [
-      { number: "01", value: "All-in-One", label: "Platform" },
-      { number: "02", value: "Real-Time", label: "Updates" },
-      { number: "03", value: "AI-Powered", label: "Marking" },
+      { number: "01", value: "MarkEase AI", label: "Marking built-in" },
+      { number: "02", value: "5 Portals", label: "One login" },
+      { number: "03", value: "SMS + MoMo", label: "Built for Rwanda" },
     ],
   },
   
@@ -59,15 +59,15 @@ export const siteConfig = {
         featured: {
           title: "MarkEase AI",
           description: "Automate exam grading with our AI-powered marking engine. Upload answer papers, receive graded results in minutes.",
-          href: "#integrations",
+          href: "/markease",
         },
         items: [
-          { name: "For Administrators", description: "Complete school operations management", href: "#features", icon: "sparkles" },
-          { name: "For Teachers", description: "Class management and AI-powered marking", href: "#features", icon: "code" },
-          { name: "For Parents", description: "Real-time academic visibility", href: "#features", icon: "cloud" },
-          { name: "For Students", description: "Personal academic dashboard", href: "#features", icon: "cpu" },
-          { name: "Financial Operations", description: "Fee management and payment tracking", href: "#features", icon: "server" },
-          { name: "Data Security", description: "Enterprise-grade protection", href: "#features", icon: "shield" },
+          { name: "For Administrators", description: "Complete school operations management", href: "/services/administrators", icon: "sparkles" },
+          { name: "For Teachers", description: "Class management and AI-powered marking", href: "/services/teachers", icon: "code" },
+          { name: "For Parents", description: "Real-time academic visibility", href: "/services/parents-students", icon: "cloud" },
+          { name: "For Students", description: "Personal academic dashboard", href: "/services/parents-students", icon: "cpu" },
+          { name: "Financial Operations", description: "Fee management and payment tracking", href: "/services/administrators", icon: "server" },
+          { name: "Data Security", description: "Enterprise-grade protection", href: "/features", icon: "shield" },
         ],
       },
     },
@@ -91,25 +91,26 @@ export const siteConfig = {
       {
         year: "Solution",
         title: "DimeSchool",
-        description: "A unified platform that connects everyone in your school community and automates the work that slows you down.",
+        description: "A unified platform that connects everyone in your school community, with MarkEase AI marking built into every assessment, so the heaviest workload of all gets automated too.",
       },
     ],
     principles: [
       {
         title: "For Administrators",
-        description: "Maintain complete student records, smart enrollment, staff management, financial operations, and curriculum management all in one secure location.",
+        description: "Student records, enrollment, staff and roles, attendance (even biometric), plus fees, expenses, SMS communication, and report cards in one secure place.",
       },
       {
         title: "For Teachers",
-        description: "Class dashboards, assessment management, AI-powered marking with MarkEase integration, and student performance insights.",
+        description: "Class dashboards, assessments and online exams with live monitoring, AI-powered marking with MarkEase, and per-class performance insights.",
       },
       {
         title: "For Parents & Students",
-        description: "Real-time academic visibility, fee tracking, multi-child support, and personalized dashboards with detailed feedback.",
+        description: "Real-time grades and fee visibility for parents. Personal dashboards, online exams, an AI study tutor, and an e-book library for students.",
       },
     ],
     statements: [
       "Eliminate administrative chaos",
+      "AI marking built in, not bolted on",
       "Give time back to teachers",
       "Connect your entire school community",
     ],
@@ -122,47 +123,61 @@ export const siteConfig = {
       id: "administrators",
       name: "For Administrators",
       tagline: "Complete Operations Management",
-      description: "Manage every aspect of your school from student records to financial operations. Search any student in seconds, handle enrollments with drag-and-drop simplicity.",
+      description: "Run the whole school from one dashboard: records, enrollment, attendance, finance, and communication. Find any student in seconds and keep every change on an audit trail.",
       cta: "Learn More",
       features: [
-        "Student Information Management",
-        "Smart Enrollment & Class Assignment",
-        "Staff & Role Management",
-        "Fee Management & Payment Tracking",
-        "Expense Management with Audit Trails",
-        "Program & Curriculum Management",
-        "Promotion & Graduation Workflows",
+        "Student, Parent & Staff Records",
+        "Enrollment, Classes & Subject Combinations",
+        "Attendance: Manual or Biometric Devices",
+        "Fees, Mobile Money & Expense Tracking",
+        "Bulk SMS & School Announcements",
+        "Report Cards, Results & Promotions",
+        "Custom Roles & Granular Permissions",
       ],
     },
     {
       id: "teachers",
       name: "For Teachers",
       tagline: "AI-Powered Teaching Tools",
-      description: "Everything you need to manage your classes and assessments. Create assessments, grade with AI assistance, and track student performance all in one place.",
+      description: "Everything you need to run your classes. Create assessments and online exams, grade handwritten papers with AI assistance, and publish results parents see instantly.",
       cta: "Explore Features",
       features: [
-        "Class Dashboard with Student Overview",
-        "Assessment Management",
         "AI-Powered Marking with MarkEase",
-        "Student Performance Insights",
-        "AI-Generated Study Recommendations",
-        "Results Management & Reports",
+        "Class Dashboard with Student Overview",
+        "Assessments: Create, Mark, Publish",
+        "Online Exams with Live Monitoring",
+        "Student Mark Appeals Handled In-App",
+        "AI Class Insights & Performance Trends",
       ],
     },
     {
       id: "parents-students",
       name: "For Parents & Students",
       tagline: "Real-Time Visibility",
-      description: "Stay connected to academic progress. Parents see grades as soon as teachers publish them. Students track their performance and receive personalized feedback.",
+      description: "Parents see grades the moment teachers publish them, with per-child analytics and fee balances. Students get their own portal, no email address required.",
       cta: "See Portal",
       features: [
-        "Real-Time Academic Visibility",
+        "Real-Time Grades & Results",
         "Fee & Payment Tracking",
-        "Multi-Child Support",
-        "Direct Communication Channel",
-        "Personal Academic Dashboard",
-        "Assessment Results & Feedback",
-        "Enrollment History",
+        "Multi-Child Support with Per-Child Analytics",
+        "Online Exams from Any Device",
+        "AI Study Tutor for Students",
+        "E-Book Library Access",
+        "Simple Student Code Login",
+      ],
+    },
+    {
+      id: "librarians",
+      name: "For Librarians",
+      tagline: "The Library, Organized",
+      description: "A dedicated librarian portal tracks every book from donation to shelf to student hands: individual loans, whole-class sets, and overdue follow-ups without extra software.",
+      cta: "See Library Tools",
+      features: [
+        "Book Catalog with Source Tracking",
+        "Individual Student Loans",
+        "Class-Set Loans for Whole Classes",
+        "Overdue & Return Tracking",
+        "E-Books Students Read in Their Portal",
       ],
     },
   ],
@@ -212,7 +227,7 @@ export const siteConfig = {
       company: "Unity Secondary School",
     },
     {
-      quote: "As a parent of three children in different grades, having one dashboard to see all their progress is incredible. No more waiting for term reports - I see grades in real-time.",
+      quote: "As a parent of three children in different grades, having one dashboard to see all their progress is incredible. No more waiting for term reports. I see grades in real time.",
       author: "Amina Hassan",
       role: "Parent",
       company: "Riverside International",
@@ -222,28 +237,40 @@ export const siteConfig = {
   // FAQ
   faq: [
     {
-      question: "Can I import existing student data?",
-      answer: "Yes. DimeSchool supports bulk import from Excel and CSV files. Our team can assist with data migration for larger schools.",
+      question: "How do students log in?",
+      answer: "Every student gets a simple school code, like KCS4869, and sets a password on first login. No email address needed, so even the youngest learners can access their portal.",
     },
     {
-      question: "Does DimeSchool work offline?",
-      answer: "The core platform requires an internet connection. We're developing offline capabilities for areas with limited connectivity.",
+      question: "Can we record Mobile Money payments?",
+      answer: "Yes. Fees can be recorded against cash, Mobile Money (MoMo), bank transfer, or cheque, and parents see their balance update in real time in their portal.",
     },
     {
-      question: "Can parents access the system on mobile?",
-      answer: "Yes. Every portal is fully responsive in any mobile browser, and there's a free DimeSchool Android app that bundles all portals in one place.",
+      question: "Does DimeSchool send SMS to parents?",
+      answer: "Yes. Send bulk SMS and targeted announcements to parents, students, staff, or a single class directly from the school portal.",
     },
     {
-      question: "How is student data protected?",
-      answer: "All data is encrypted in transit and at rest. We follow industry best practices for data security and comply with applicable data protection regulations.",
+      question: "Can we use fingerprint attendance devices?",
+      answer: "Yes. DimeSchool connects to fingerprint and RFID readers, so attendance is captured the moment a student checks in. No roll call needed.",
     },
     {
       question: "Can we customize the grading system?",
-      answer: "Absolutely. DimeSchool supports custom grade scales, passing thresholds, and outcome labels for any curriculum standard.",
+      answer: "Absolutely. DimeSchool supports custom grade scales, passing thresholds, subject combinations, and outcome labels for any curriculum standard, academic or vocational.",
     },
     {
-      question: "What happens if we outgrow our plan?",
-      answer: "Upgrade anytime. Your data stays intact, and you gain immediate access to additional features.",
+      question: "Can I import existing student data?",
+      answer: "Yes. Our team helps you migrate existing student records during onboarding, so your school can go live without re-typing years of data.",
+    },
+    {
+      question: "Can parents access the system on mobile?",
+      answer: "Yes. Every portal is fully responsive in any mobile browser, and the free DimeSchool Android app bundles all portals in one place with automatic over-the-air updates.",
+    },
+    {
+      question: "How is student data protected?",
+      answer: "All data is encrypted in transit and at rest, access is controlled by granular role permissions, and full audit logs track who changed what and when.",
+    },
+    {
+      question: "Does DimeSchool work offline?",
+      answer: "The core platform requires an internet connection. Our biometric attendance gateway buffers check-ins during outages and syncs when connectivity returns.",
     },
   ],
   
@@ -263,10 +290,12 @@ export const siteConfig = {
       {
         title: "Product",
         links: [
-          { name: "Features", href: "#features" },
-          { name: "Pricing", href: "#pricing" },
-          { name: "Integrations", href: "#integrations" },
-          { name: "FAQ", href: "#faq" },
+          { name: "Features", href: "/features" },
+          { name: "MarkEase AI", href: "/markease" },
+          { name: "Pricing", href: "/pricing" },
+          { name: "Services", href: "/services" },
+          { name: "How It Works", href: "/how-it-works" },
+          { name: "FAQ", href: "/faq" },
         ],
       },
       {
@@ -276,12 +305,16 @@ export const siteConfig = {
           { name: "Teacher Portal", href: "https://teacher.dimeschool.tech" },
           { name: "Parent Portal", href: "https://parent.dimeschool.tech" },
           { name: "Student Portal", href: "https://student.dimeschool.tech" },
+          { name: "Librarian Portal", href: "https://librarian.dimeschool.tech" },
           { name: "Android App", href: ANDROID_APK_URL },
         ],
       },
       {
         title: "Company",
         links: [
+          { name: "About", href: "/about" },
+          { name: "Careers", href: "/careers" },
+          { name: "Contact", href: "/contact" },
           { name: "Dime", href: "https://dime.rw" },
           { name: "MarkEase", href: "https://markease.dime.rw" },
         ],
@@ -289,8 +322,8 @@ export const siteConfig = {
       {
         title: "Legal",
         links: [
-          { name: "Privacy Policy", href: "#" },
-          { name: "Terms of Service", href: "#" },
+          { name: "Privacy Policy", href: "/privacy" },
+          { name: "Terms of Service", href: "/terms" },
         ],
       },
     ],
@@ -332,7 +365,7 @@ export const siteConfig = {
     plans: [
       {
         name: "DimeSchool",
-        price: "3,000",
+        price: "2,999",
         period: "student per term",
         description: "Core DimeSchool platform for school operations and academic management.",
         features: [
@@ -348,17 +381,18 @@ export const siteConfig = {
       },
       {
         name: "DimeSchool + MarkEase",
-        price: "5,000",
+        price: "4,999",
         period: "student per term",
         description: "DimeSchool with MarkEase AI grading included for faster assessment workflows.",
         featured: true,
         badge: "With MarkEase",
         features: [
           "Everything in DimeSchool",
-          "MarkEase AI grading integration",
+          "MarkEase AI grading for handwritten papers",
+          "AI grading for online exam essays",
           "Fee Management & Payment Tracking",
-          "Priority support",
           "Parent & Student Portals",
+          "Priority support",
         ],
         cta: "Contact Sales",
         note: "",
@@ -375,23 +409,35 @@ export const siteConfig = {
   whyChoose: [
     {
       title: "Multi-Program Support",
-      description: "Run primary school, secondary school, and technical programs on the same platform with their own curriculum structure.",
+      description: "Run academic and vocational (TVET) programs side by side, each with its own levels, courses, and curriculum structure.",
     },
     {
       title: "Flexible Academic Structures",
-      description: "Support any curriculum model: traditional grades, subject combinations, electives, and custom grading scales.",
+      description: "Support any curriculum model: custom grading schemes, subject combinations, electives, and promotion rules.",
     },
     {
       title: "Role-Based Access Control",
-      description: "Define exactly who can see and do what. Create custom roles for headmasters, department heads, accountants, and more.",
+      description: "Create custom roles for headmasters, accountants, receptionists, and more, with granular permissions and full audit logs on every change.",
     },
     {
-      title: "Data Security & Privacy",
-      description: "Student data stays secure with encryption at rest and in transit. Full audit logs track every change.",
+      title: "Biometric Attendance",
+      description: "Connect fingerprint and RFID readers so attendance records itself the moment students walk in, buffered offline and synced automatically.",
     },
     {
-      title: "Library Management",
-      description: "Track books, borrowings, and returns. Know which students have overdue materials without additional software.",
+      title: "Fees, MoMo & Expenses",
+      description: "Track student fees across cash, Mobile Money, bank transfer, and cheque, with expense management and a full school balance log.",
+    },
+    {
+      title: "SMS & Announcements",
+      description: "Reach every parent by SMS or targeted announcement: the whole school, one class, or one family at a time.",
+    },
+    {
+      title: "Online Exams, Monitored Live",
+      description: "Students sit exams on any device while teachers watch progress in real time. Objective questions auto-grade; essays go to MarkEase.",
+    },
+    {
+      title: "Student AI Tutor & E-Library",
+      description: "Students get an AI study companion and an e-book library right inside their portal, learning support beyond the classroom.",
     },
   ],
   
@@ -399,30 +445,35 @@ export const siteConfig = {
   portals: [
     {
       name: 'School Portal',
-      description: 'Complete school administration and management dashboard.',
+      description: 'Records, attendance, finance, and communication in one dashboard.',
       href: 'https://school.dimeschool.tech',
     },
     {
       name: 'Teacher Portal',
-      description: 'Manage classes, assessments, and AI-powered grading.',
+      description: 'Classes, assessments, online exams, and AI-powered grading.',
       href: 'https://teacher.dimeschool.tech',
     },
     {
       name: 'Parent Portal',
-      description: 'Track your children\'s academic progress and fees.',
+      description: 'Real-time grades, per-child analytics, and fee balances.',
       href: 'https://parent.dimeschool.tech',
     },
     {
       name: 'Student Portal',
-      description: 'View your grades, assessments, and academic history.',
+      description: 'Grades, online exams, an AI study tutor, and e-books.',
       href: 'https://student.dimeschool.tech',
+    },
+    {
+      name: 'Librarian Portal',
+      description: 'Book catalog, student loans, and whole-class sets.',
+      href: 'https://librarian.dimeschool.tech',
     },
   ],
 
   // Mobile App (shown under the portals grid)
   mobileApp: {
     title: "Take DimeSchool everywhere",
-    description: "Every portal in one Android app — with instant over-the-air updates, so you always run the latest version.",
+    description: "Every portal in one Android app, with instant over-the-air updates so you always run the latest version.",
     cta: "Download for Android",
     note: "Free APK · Android 7.0+",
     href: ANDROID_APK_URL,
@@ -431,7 +482,7 @@ export const siteConfig = {
   // Integrations
   integrations: {
     title: "MarkEase AI Marking",
-    description: "Automate exam grading with our AI-powered marking engine. Upload answer papers, receive graded results with detailed feedback in minutes. Teachers review and approve, saving hours every assessment cycle.",
+    description: "Scan or upload handwritten answer papers and MarkEase identifies each student, marks every question, and drafts feedback in minutes, not weekends. Teachers stay in charge: every AI mark is reviewed before students see it, and students can appeal any mark in-app.",
     cta: "Learn more about MarkEase",
   },
 };

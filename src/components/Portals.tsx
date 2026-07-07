@@ -1,101 +1,96 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { AcademicCapIcon, UsersIcon, BuildingLibraryIcon, UserIcon, ArrowTopRightOnSquareIcon, PlayCircleIcon, DevicePhoneMobileIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+import { ArrowUpRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
-import { DoodleBrush } from './Doodles';
+import { ChapterHead, Mark } from './Chapter';
+import { MaskReveal } from './motion/Motion';
+import PhoneMockup from './graphics/PhoneMockup';
 
-const iconMap: Record<string, typeof UsersIcon> = {
-  'School Portal': BuildingLibraryIcon,
-  'Teacher Portal': AcademicCapIcon,
-  'Parent Portal': UsersIcon,
-  'Student Portal': UserIcon,
-};
-
-const tones = ['bg-chart-2/12', 'bg-primary/10', 'bg-accent/30', 'bg-chart-4/25'];
+const tileTones = [
+  'bg-blue text-white',
+  'bg-yellow text-foreground',
+  'bg-primary text-white',
+  'bg-green text-white',
+  'bg-foreground text-background',
+];
 
 export default function Portals() {
   const portals = siteConfig.portals;
   const mobileApp = siteConfig.mobileApp;
 
   return (
-    <section id="portals" className="relative overflow-hidden py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Portal Access</p>
-          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">Choose your portal and jump in</h2>
-          <DoodleBrush className="mx-auto mt-2 h-4 w-32" />
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Each workspace is optimized for one role so teams spend less time searching and more time executing.
-          </p>
-        </div>
+    <section id="portals" className="relative py-14 lg:py-20" data-chapter="N.009 · The Portals">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <ChapterHead number="N.009" label="The Portals" right="One color per role" />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {portals.map((portal, index) => {
-            const Icon = iconMap[portal.name] ?? UsersIcon;
+        <MaskReveal className="mt-10">
+          <h2 className="chapter-title max-w-5xl">
+            Pick your color. <Mark tone="green">Jump in.</Mark>
+          </h2>
+        </MaskReveal>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          Each workspace is optimized for one role so teams spend less time searching and more time
+          executing.
+        </p>
 
-            return (
-              <motion.article
-                key={portal.name}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.06 }}
-                className={`rounded-3xl border border-border/80 p-5 shadow-sm ${tones[index % tones.length]}`}
+        <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {portals.map((portal, index) => (
+            <motion.div
+              key={portal.name}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              className="h-full"
+            >
+              <a
+                href={portal.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group flex h-full min-h-72 flex-col justify-between rounded-[1.25rem] p-6 transition-transform hover:-translate-y-1 ${tileTones[index % tileTones.length]}`}
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-sm">
-                  <Icon className="h-5 w-5 text-primary" />
+                <span className="flex h-10 w-10 items-center justify-center self-end rounded-full bg-white/20 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRightIcon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="font-display text-[1.7rem] font-extrabold leading-[1.02] tracking-[-0.01em]">
+                    {portal.name.replace(' Portal', '')}
+                    <br />
+                    Portal
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed opacity-85">{portal.description}</p>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-foreground">{portal.name}</h3>
-                <p className="mt-2 min-h-16 text-sm leading-relaxed text-muted-foreground">{portal.description}</p>
-                <div className="mt-4 space-y-2">
-                  <a
-                    href={portal.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-                  >
-                    Open Portal
-                    <ArrowTopRightOnSquareIcon className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="#contact"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-transparent px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-white"
-                  >
-                    Quick Tour
-                    <PlayCircleIcon className="h-4 w-4" />
-                  </a>
-                </div>
-              </motion.article>
-            );
-          })}
+              </a>
+            </motion.div>
+          ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="mt-6 flex flex-col items-center justify-between gap-5 rounded-3xl border border-border/80 bg-primary/5 p-6 text-center sm:flex-row sm:text-left"
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ delay: 0.12 }}
+          className="mt-3 flex flex-col justify-between gap-8 overflow-hidden rounded-[1.25rem] bg-purple p-8 text-white md:flex-row md:items-center lg:p-10"
         >
-          <div className="flex items-center gap-4">
-            <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm sm:inline-flex">
-              <DevicePhoneMobileIcon className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-foreground">{mobileApp.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{mobileApp.description}</p>
-            </div>
+          <div className="max-w-md">
+            <h3 className="font-display text-2xl font-extrabold tracking-[-0.01em] lg:text-3xl">
+              Take DimeSchool <Mark tone="yellow">everywhere</Mark>
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-white/80">{mobileApp.description}</p>
           </div>
+          <PhoneMockup className="mx-auto md:-mb-24 md:mx-0" />
           <div className="shrink-0">
             <a
               href={mobileApp.href}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/25 transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"
             >
               <ArrowDownTrayIcon className="h-4 w-4" />
               {mobileApp.cta}
             </a>
-            <p className="mt-2 text-center text-xs text-muted-foreground">{mobileApp.note}</p>
+            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 sm:text-center">
+              {mobileApp.note}
+            </p>
           </div>
         </motion.div>
       </div>

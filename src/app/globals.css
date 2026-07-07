@@ -16,19 +16,24 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-blue: var(--blue);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-purple: var(--purple);
+  --color-cream: var(--cream);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-chart-1: var(--primary);
+  --color-chart-2: var(--blue);
+  --color-chart-3: var(--yellow);
+  --color-chart-4: var(--green);
+  --color-chart-5: var(--purple);
 
-  --font-sans: var(--font-sans), "Plus Jakarta Sans", sans-serif;
-  --font-display: var(--font-display), "Baloo 2", cursive;
+  --font-sans: var(--font-sans), "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-display), "Bricolage Grotesque", "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -50,39 +55,52 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.2103 0.0059 285.8852);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.1408 0.0044 285.8229);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.1408 0.0044 285.8229);
-  --primary: oklch(0.65 0.145 45);
+  /* Market-day system: cream ground, ink type, full-saturation portal colors.
+     School = blue, Teacher = yellow, Parent = orange (brand), Student = green. */
+  --background: oklch(0.9430 0.0190 84);
+  --foreground: oklch(0.2150 0.0130 55);
+  --card: oklch(0.9860 0.0060 90);
+  --card-foreground: oklch(0.2150 0.0130 55);
+  --popover: oklch(0.9860 0.0060 90);
+  --popover-foreground: oklch(0.2150 0.0130 55);
+  --primary: oklch(0.7050 0.1870 45);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9197 0.004 286.3202);
-  --secondary-foreground: oklch(0.1408 0.0044 285.8229);
-  --muted: oklch(0.9674 0.0013 286.3752);
-  --muted-foreground: oklch(0.552 0.0153 285.8863);
-  --accent: oklch(0.9197 0.004 286.3202);
-  --accent-foreground: oklch(0.1408 0.0044 285.8229);
+  --secondary: oklch(0.9000 0.0250 84);
+  --secondary-foreground: oklch(0.2150 0.0130 55);
+  --muted: oklch(0.9000 0.0250 84);
+  --muted-foreground: oklch(0.4900 0.0220 62);
+  --accent: oklch(0.8250 0.1710 84);
+  --accent-foreground: oklch(0.2150 0.0130 55);
+  --blue: oklch(0.5560 0.2180 262);
+  --yellow: oklch(0.8250 0.1710 84);
+  --green: oklch(0.6300 0.1700 149);
+  --purple: oklch(0.5850 0.2330 296);
+  --cream: oklch(0.9430 0.0190 84);
   --destructive: oklch(0.583 0.2387 28.4765);
   --destructive-foreground: oklch(0.9705 0.0129 17.3797);
-  --border: oklch(0.911 0.006 286.286 / 0.5);
-  --input: oklch(0.8711 0.0055 286.286);
-  --ring: oklch(0.65 0.145 45);
+  --border: oklch(0.2150 0.0130 55 / 0.25);
+  --input: oklch(0.2150 0.0130 55 / 0.35);
+  --ring: oklch(0.7050 0.1870 45);
 
-  --chart-1: oklch(0.65 0.145 45);
-  --chart-2: oklch(0.72 0.12 50);
-  --chart-3: oklch(0.78 0.1 55);
-  --chart-4: oklch(0.85 0.08 48);
-  --chart-5: oklch(0.9 0.05 46);
+  --radius: 1.25rem;
+  --tracking-normal: 0em;
 
-  --radius: 1rem;
-  --tracking-normal: 0.01em;
+  --shadow-sm: 0 2px 8px -2px oklch(0.2150 0.0130 55 / 0.10);
+  --shadow: 0 10px 24px -12px oklch(0.2150 0.0130 55 / 0.18);
+  --shadow-md: 0 18px 40px -18px oklch(0.2150 0.0130 55 / 0.24);
+  --shadow-lg: 0 28px 60px -24px oklch(0.2150 0.0130 55 / 0.32);
+}
 
-  --shadow-sm: 0 2px 6px 0 color-mix(in oklab, var(--foreground) 10%, transparent);
-  --shadow: 0 8px 20px -8px color-mix(in oklab, var(--foreground) 16%, transparent);
-  --shadow-md: 0 14px 32px -12px color-mix(in oklab, var(--foreground) 22%, transparent);
-  --shadow-lg: 0 24px 50px -16px color-mix(in oklab, var(--foreground) 28%, transparent);
+html {
+  scroll-behavior: smooth;
+  /* framer-motion useScroll measures targets against the scroll container (documentElement) */
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 * {
@@ -95,6 +113,82 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--primary) 26%, white);
+  background: var(--yellow);
   color: var(--foreground);
+}
+
+/* ---- Market-day primitives ---- */
+
+/* Mono chapter labels: N.001 · THE PROBLEM */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+/* Poster display headline: chunky rounded grotesque */
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 5.25rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+/* Inline color panel behind a key word */
+.mark {
+  color: #fff;
+  background: var(--primary);
+  border-radius: 0.28em;
+  padding: 0.02em 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.mark-yellow {
+  background: var(--yellow);
+  color: var(--foreground);
+}
+
+.mark-blue { background: var(--blue); }
+.mark-green { background: var(--green); }
+.mark-purple { background: var(--purple); }
+
+/* Scrolling marquee ribbon */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee-scroll 26s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Graph-paper grid, Units footer style */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 44px 44px;
 }

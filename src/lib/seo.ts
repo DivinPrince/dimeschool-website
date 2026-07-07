@@ -16,12 +16,22 @@ export const defaultViewport: Viewport = {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteConfig.name} - ${siteConfig.tagline}`,
+    default: `${siteConfig.name} | ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
     siteConfig.name,
+    'school management system',
+    'school management software Rwanda',
+    'AI exam marking',
+    'MarkEase',
+    'student information system',
+    'school fees management',
+    'biometric attendance',
+    'parent portal',
+    'online exams',
+    'Kigali',
   ],
   authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
@@ -36,7 +46,7 @@ export const defaultMetadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} - ${siteConfig.tagline}`,
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
     images: [
       {
@@ -49,7 +59,7 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} - ${siteConfig.tagline}`,
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
     images: ['/og-image.png'],
     creator: siteConfig.social.twitter ? `@${siteConfig.social.twitter.split('/').pop()}` : undefined,

@@ -1,143 +1,137 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
-import { DoodleBrush, DoodleSquiggle } from './Doodles';
+import { ChapterHead, Mark } from './Chapter';
+import { MaskReveal } from './motion/Motion';
+import Snapshot from './graphics/Snapshot';
 
-const stats = [
+const commitments = [
   { label: 'Average response time', value: '<24h' },
   { label: 'Onboarding kickoff', value: 'Same week' },
   { label: 'Guided rollout support', value: 'Included' },
 ];
 
+const inputClass =
+  'mt-2 w-full rounded-xl border-2 border-foreground/20 bg-card px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary';
+
 export default function Contact() {
   const { contact } = siteConfig;
 
   return (
-    <section id="contact" className="relative overflow-hidden py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Contact</p>
-          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">Let’s map your school rollout</h2>
-          <DoodleBrush className="mt-2 h-4 w-28" />
-          <p className="mt-4 text-lg text-muted-foreground">
-            Tell us your school structure and we will propose the fastest launch plan for your team.
-          </p>
-        </div>
+    <section id="contact" className="relative py-14 lg:py-20" data-chapter="N.010 · Contact">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <ChapterHead number="N.010" label="Contact" right="Kigali Innovation City" />
 
-        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <MaskReveal className="mt-10">
+          <h2 className="chapter-title max-w-5xl">
+            Let&apos;s map your <Mark>school rollout</Mark>
+          </h2>
+        </MaskReveal>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          Tell us your school structure and we will propose the fastest launch plan for your team.
+        </p>
+
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
           <motion.aside
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-4 rounded-[2rem] border border-border/80 bg-white p-6 shadow-sm"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
           >
-            <div className="rounded-2xl border border-border/70 bg-muted/50 p-4">
-              <div className="flex items-center gap-3 text-sm font-semibold text-foreground">
-                <EnvelopeIcon className="h-5 w-5 text-primary" />
+            <div className="border-t-2 border-foreground/80 py-6">
+              <p className="label-mono">Email</p>
+              <a
+                href={`mailto:${contact.email}`}
+                className="font-display mt-2 block text-xl font-bold tracking-[-0.01em] text-foreground hover:text-primary"
+              >
                 {contact.email}
-              </div>
+              </a>
             </div>
-            <div className="rounded-2xl border border-border/70 bg-muted/50 p-4">
-              <div className="flex items-start gap-3 text-sm text-foreground">
-                <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                <div className="space-y-1">
-                  {contact.phones.map((phone) => (
-                    <p key={phone} className="font-semibold">{phone}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-border/70 bg-muted/50 p-4">
-              <div className="flex items-start gap-3 text-sm text-foreground">
-                <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                <p className="font-semibold">
-                  {contact.address.line1}
-                  <br />
-                  {contact.address.line2}
+            <div className="border-t-2 border-foreground/80 py-6">
+              <p className="label-mono">Phone</p>
+              {contact.phones.map((phone) => (
+                <p
+                  key={phone}
+                  className="font-display mt-2 text-xl font-bold tracking-[-0.01em] text-foreground"
+                >
+                  {phone}
                 </p>
-              </div>
+              ))}
+            </div>
+            <div className="border-t-2 border-foreground/80 py-6">
+              <p className="label-mono">Office</p>
+              <p className="font-display mt-2 text-xl font-bold tracking-[-0.01em] text-foreground">
+                {contact.address.line1}
+                <br />
+                {contact.address.line2}
+              </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-primary/20 bg-primary/5 p-4">
-                  <p className="text-lg font-bold text-foreground">{stat.value}</p>
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">{stat.label}</p>
+            <div className="border-t-2 border-foreground/80 py-6">
+              {commitments.map((item) => (
+                <div key={item.label} className="flex items-baseline justify-between gap-4 py-1.5">
+                  <span className="text-sm text-muted-foreground">{item.label}</span>
+                  <span className="text-sm font-bold text-foreground">{item.value}</span>
                 </div>
               ))}
             </div>
+
+            <Snapshot
+              src="/assets/photos/student-desk.jpg"
+              alt="A student carefully drawing lines with a ruler in an exercise book"
+              caption="Built around real classrooms."
+              sub="DimeSchool · Kigali"
+              className="mt-8 max-w-xs"
+              sizes="320px"
+            />
           </motion.aside>
 
           <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-[2rem] border border-border/80 bg-white p-6 shadow-md lg:p-8"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ delay: 0.08 }}
+            className="rounded-[1.75rem] bg-card p-7 shadow-md lg:p-10"
           >
             <div className="grid gap-5 md:grid-cols-2">
-              <label className="text-sm font-medium text-foreground">
+              <label className="text-sm font-bold text-foreground">
                 Name
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your full name"
-                  required
-                  className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
-                />
+                <input type="text" name="name" placeholder="Your full name" required className={inputClass} />
               </label>
-              <label className="text-sm font-medium text-foreground">
+              <label className="text-sm font-bold text-foreground">
                 Work Email
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="you@school.org"
-                  required
-                  className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
-                />
+                <input type="email" name="email" placeholder="you@school.org" required className={inputClass} />
               </label>
             </div>
 
             <div className="mt-5 grid gap-5 md:grid-cols-2">
-              <label className="text-sm font-medium text-foreground">
+              <label className="text-sm font-bold text-foreground">
                 School Name
-                <input
-                  type="text"
-                  name="school"
-                  placeholder="Your school"
-                  className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
-                />
+                <input type="text" name="school" placeholder="Your school" className={inputClass} />
               </label>
-              <label className="text-sm font-medium text-foreground">
+              <label className="text-sm font-bold text-foreground">
                 Student Count
-                <input
-                  type="text"
-                  name="size"
-                  placeholder="e.g. 850"
-                  className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
-                />
+                <input type="text" name="size" placeholder="e.g. 850" className={inputClass} />
               </label>
             </div>
 
-            <label className="mt-5 block text-sm font-medium text-foreground">
+            <label className="mt-5 block text-sm font-bold text-foreground">
               What do you need most?
               <textarea
                 name="message"
                 rows={5}
                 placeholder="Tell us your current workflow pain points"
                 required
-                className="mt-2 w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                className={`${inputClass} resize-none`}
               />
             </label>
 
             <button
               type="submit"
-              className="mt-6 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm"
+              className="mt-7 inline-flex rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
               Book my demo
             </button>
-            <DoodleSquiggle className="pointer-events-none absolute bottom-4 right-5 hidden h-10 w-20 rotate-[12deg] lg:block" />
           </motion.form>
         </div>
       </div>
