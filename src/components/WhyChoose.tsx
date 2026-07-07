@@ -36,11 +36,12 @@ function CardGlyph({ index }: { index: number }) {
   );
 }
 
+/* White cards; the portal color is confined to the numeral (yellow is too pale as text, so orange). */
 const proofStats = [
-  { value: '5', label: 'Role portals: school, teacher, parent, student, librarian', className: 'bg-blue text-white' },
-  { value: '1', label: 'Android app for every role, updated over the air', className: 'bg-yellow text-foreground' },
-  { value: '4', label: 'Payment methods tracked: cash, MoMo, bank, cheque', className: 'bg-green text-white' },
-  { value: 'SMS', label: 'Parent messaging built into the platform', className: 'bg-purple text-white' },
+  { value: '5', label: 'Role portals: school, teacher, parent, student, librarian', valueClass: 'text-blue' },
+  { value: '1', label: 'Android app for every role, updated over the air', valueClass: 'text-primary' },
+  { value: '4', label: 'Payment methods tracked: cash, MoMo, bank, cheque', valueClass: 'text-green' },
+  { value: 'SMS', label: 'Parent messaging built into the platform', valueClass: 'text-purple' },
 ];
 
 const ribbon = [
@@ -81,12 +82,12 @@ export default function WhyChoose() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: index * 0.06 }}
-              className={`rounded-2xl p-7 lg:p-8 ${stat.className}`}
+              className="rounded-2xl bg-card p-7 shadow-sm lg:p-8"
             >
-              <p className="font-display text-[clamp(2.6rem,4.2vw,3.75rem)] font-extrabold leading-none tracking-[-0.02em]">
+              <p className={`font-display text-[clamp(2.6rem,4.2vw,3.75rem)] font-extrabold leading-none tracking-[-0.02em] ${stat.valueClass}`}>
                 <Counter value={stat.value} />
               </p>
-              <p className="mt-3 text-sm font-semibold opacity-85">{stat.label}</p>
+              <p className="mt-3 text-sm font-semibold text-muted-foreground">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -130,7 +131,7 @@ export default function WhyChoose() {
       </div>
 
       <div className="mt-20">
-        <Marquee items={ribbon} className="bg-yellow text-foreground" />
+        <Marquee items={ribbon} />
       </div>
     </section>
   );

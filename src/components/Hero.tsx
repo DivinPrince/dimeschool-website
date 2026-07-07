@@ -188,7 +188,7 @@ export default function Hero() {
       </motion.div>
 
       <div className="mt-10">
-        <Marquee items={ribbon} className="bg-blue text-white" />
+        <Marquee items={ribbon} />
       </div>
     </section>
   );

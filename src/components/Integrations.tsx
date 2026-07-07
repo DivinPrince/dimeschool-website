@@ -45,7 +45,7 @@ export default function Integrations() {
       id="integrations"
       data-chapter="N.003 · MarkEase AI"
     >
-      <CanvasZoom className="bg-blue px-5 py-16 text-white sm:px-8 lg:px-12 lg:py-24">
+      <CanvasZoom className="bg-card px-5 py-16 text-foreground sm:px-8 lg:px-12 lg:py-24">
         <ChapterHead number="N.003" label="MarkEase AI" right="The DimeSchool difference" />
 
         <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -55,7 +55,7 @@ export default function Integrations() {
                 <Mark tone="yellow">AI marking</Mark> that gives weekends back
               </h2>
             </MaskReveal>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               {integrations.description}
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function Integrations() {
             href="https://markease.dime.rw"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-card px-6 py-3.5 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"
+            className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-foreground px-6 py-3.5 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
           >
             {integrations.cta}
             <ArrowUpRightIcon className="h-4 w-4" />
@@ -94,25 +94,25 @@ export default function Integrations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: index * 0.07 }}
-              className="rounded-2xl bg-white/10 p-6 lg:p-7"
+              className="rounded-2xl bg-secondary p-6 lg:p-7"
             >
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                 0{index + 1}
               </span>
               <h3 className="font-display mt-3 text-xl font-bold tracking-[-0.01em]">
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/80">{step.detail}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.detail}</p>
             </motion.article>
           ))}
         </div>
 
-        <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+        <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
           Why it matters &middot; LARS 2025, Rwanda&apos;s national learning assessment
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           {proof.map((stat) => (
-            <div key={stat.label} className="rounded-2xl bg-card p-6 text-foreground lg:p-8">
+            <div key={stat.label} className="rounded-2xl bg-secondary p-6 text-foreground lg:p-8">
               <p className="font-display text-[clamp(2.2rem,3.6vw,3.25rem)] font-extrabold leading-none tracking-[-0.02em]">
                 <Counter value={stat.value} />
               </p>
@@ -122,13 +122,13 @@ export default function Integrations() {
         </div>
 
         <div className="mt-16 text-center">
-          <MarkEaseMark className="mx-auto mb-5 h-12 w-12 text-yellow" />
+          <MarkEaseMark className="mx-auto mb-5 h-12 w-12 text-primary" />
           <MaskReveal>
             <p className="font-display text-[clamp(1.6rem,3.4vw,2.75rem)] font-extrabold leading-tight tracking-[-0.01em]">
               Mark less. Teach more. <Mark tone="yellow">Reach every learner.</Mark>
             </p>
           </MaskReveal>
-          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
             The MarkEase promise
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
@@ -141,7 +141,7 @@ export default function Integrations() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-white/15 px-7 py-4 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center rounded-full border-2 border-foreground/25 px-7 py-4 text-sm font-bold text-foreground transition hover:-translate-y-0.5 hover:border-foreground"
             >
               Watch it mark a real paper
             </Link>

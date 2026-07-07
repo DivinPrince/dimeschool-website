@@ -37,7 +37,7 @@ export default function Manifesto() {
       id="manifesto"
       data-chapter="N.001 · The Problem"
     >
-      <CanvasZoom className="bg-primary px-5 py-16 text-white sm:px-8 lg:px-12 lg:py-24">
+      <CanvasZoom className="bg-foreground px-5 py-16 text-background sm:px-8 lg:px-12 lg:py-24">
         <ChapterHead number="N.001" label="The Problem" right="Why schools switch" />
 
         <MaskReveal className="mt-10">
@@ -46,7 +46,7 @@ export default function Manifesto() {
           </h2>
         </MaskReveal>
 
-        <div className="mt-16 border-t border-white/30">
+        <div className="mt-16 border-t border-background/30">
           {manifesto.timeline.map((item, index) => (
             <motion.article
               key={item.year}
@@ -54,15 +54,15 @@ export default function Manifesto() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: index * 0.07 }}
-              className="grid gap-3 border-b border-white/30 py-8 md:grid-cols-[140px_1fr_1.4fr] md:gap-8 lg:py-10"
+              className="grid gap-3 border-b border-background/30 py-8 md:grid-cols-[140px_1fr_1.4fr] md:gap-8 lg:py-10"
             >
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-background/70">
                 {item.year}
               </span>
               <h3 className="font-display text-2xl font-bold tracking-[-0.01em] lg:text-3xl">
                 {index === 2 ? <Mark tone="yellow">{item.title}</Mark> : item.title}
               </h3>
-              <p className="max-w-xl text-base leading-relaxed text-white/80">{item.description}</p>
+              <p className="max-w-xl text-base leading-relaxed text-background/75">{item.description}</p>
             </motion.article>
           ))}
         </div>
@@ -81,12 +81,12 @@ export default function Manifesto() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: index * 0.09 }}
-              className="rounded-3xl bg-white/10 p-7"
+              className="rounded-3xl bg-background/10 p-7"
             >
               <h3 className="font-display text-2xl font-bold tracking-[-0.01em]">
                 {item.title}
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-white/80">{item.description}</p>
+              <p className="mt-3 text-[15px] leading-relaxed text-background/75">{item.description}</p>
             </motion.article>
           ))}
         </div>
@@ -96,7 +96,7 @@ export default function Manifesto() {
             text={manifesto.founderMessage}
             className="font-display mx-auto max-w-4xl text-center text-[clamp(1.5rem,3.4vw,2.75rem)] font-bold leading-[1.2] tracking-[-0.01em]"
           />
-          <p className="mt-8 text-center font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+          <p className="mt-8 text-center font-mono text-[11px] uppercase tracking-[0.14em] text-background/70">
             Founder&apos;s message &middot; Dime Inc.
           </p>
         </div>

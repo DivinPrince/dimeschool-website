@@ -55,8 +55,13 @@
 }
 
 :root {
-  /* Market-day system: cream ground, ink type, full-saturation portal colors.
-     School = blue, Teacher = yellow, Parent = orange (brand), Student = green. */
+  /* Market-day system on the 60-30-10 rule:
+       60 — cream ground (--background) under every section;
+       30 — structure: white cards (--card) and ink panels (--foreground);
+       10 — full-saturation accents (primary + portal colors), only at accent
+            scale: the hero canvas, CTAs, marks, chips, bands, dots, nav tiles.
+     Portal colors: School = blue, Teacher = yellow, Parent = orange (brand),
+     Student = green, Librarian = purple. Never as full section canvases. */
   --background: oklch(0.9430 0.0190 84);
   --foreground: oklch(0.2150 0.0130 55);
   --card: oklch(0.9860 0.0060 90);

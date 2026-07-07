@@ -69,7 +69,7 @@ function wrap(min: number, max: number, v: number) {
  */
 export function Marquee({
   items,
-  className = 'bg-blue text-white',
+  className = 'bg-foreground text-background',
   baseVelocity = 2.4,
 }: {
   items: string[];

@@ -9,11 +9,12 @@ import { ChapterHead, Mark } from './Chapter';
 import { MaskReveal } from './motion/Motion';
 import { portalPreviews } from './graphics/PortalPreviews';
 
+/* Role color stays accent-sized: the active tab tile and a chip on the ink panel. */
 const roleTones = [
-  { tile: 'bg-blue text-white', dot: 'bg-blue', panel: 'bg-blue', text: 'text-white', soft: 'border-white/25', dim: 'text-white/75' },
-  { tile: 'bg-yellow text-foreground', dot: 'bg-yellow', panel: 'bg-yellow', text: 'text-foreground', soft: 'border-foreground/20', dim: 'text-foreground/75' },
-  { tile: 'bg-green text-white', dot: 'bg-green', panel: 'bg-green', text: 'text-white', soft: 'border-white/25', dim: 'text-white/75' },
-  { tile: 'bg-purple text-white', dot: 'bg-purple', panel: 'bg-purple', text: 'text-white', soft: 'border-white/25', dim: 'text-white/75' },
+  { tile: 'bg-blue text-white', dot: 'bg-blue', chip: 'bg-blue text-white' },
+  { tile: 'bg-yellow text-foreground', dot: 'bg-yellow', chip: 'bg-yellow text-foreground' },
+  { tile: 'bg-green text-white', dot: 'bg-green', chip: 'bg-green text-white' },
+  { tile: 'bg-purple text-white', dot: 'bg-purple', chip: 'bg-purple text-white' },
 ];
 
 export default function Features() {
@@ -90,9 +91,9 @@ export default function Features() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -18 }}
                 transition={{ duration: 0.25 }}
-                className={`rounded-[1.75rem] p-7 shadow-md lg:p-10 ${tone.panel} ${tone.text}`}
+                className="rounded-[1.75rem] bg-foreground p-7 text-background shadow-md lg:p-10"
               >
-                <span className="font-mono text-[11px] uppercase tracking-[0.14em] opacity-75">
+                <span className={`inline-flex rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] ${tone.chip}`}>
                   {active.tagline}
                 </span>
                 <h3 className="font-display mt-3 text-3xl font-bold tracking-[-0.01em]">
@@ -105,9 +106,9 @@ export default function Features() {
                   </div>
                 )}
 
-                <ul className={`mt-8 border-t ${tone.soft}`}>
+                <ul className="mt-8 border-t border-background/20">
                   {active.features.map((feature) => (
-                    <li key={feature} className={`border-b py-3.5 ${tone.soft}`}>
+                    <li key={feature} className="border-b border-background/20 py-3.5">
                       <span className="text-[15px] font-semibold">{feature}</span>
                     </li>
                   ))}
@@ -115,9 +116,7 @@ export default function Features() {
 
                 <Link
                   href="/contact"
-                  className={`mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-transform hover:-translate-y-0.5 ${
-                    activeTab === 1 ? 'bg-foreground text-background' : 'bg-card text-foreground'
-                  }`}
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-card px-6 py-3 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"
                 >
                   {active.cta}
                   <ArrowRightIcon className="h-4 w-4" />

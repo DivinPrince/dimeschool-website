@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <Marquee items={ribbon} className="bg-green text-white" />
+      <Marquee items={ribbon} />
 
       <div aria-hidden className="grid-paper relative select-none overflow-hidden">
         {/* whileInView lives on the un-transformed <p>: the letters start
