@@ -1,99 +1,127 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { UserGroupIcon, AcademicCapIcon, UsersIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
-import { DoodleBrush, DoodleSquiggle } from './Doodles';
+import { ChapterHead, Mark } from './Chapter';
+import { MaskReveal } from './motion/Motion';
+import { portalPreviews } from './graphics/PortalPreviews';
 
-const icons = [UserGroupIcon, AcademicCapIcon, UsersIcon];
-const panelTones = ['from-chart-2/20 via-chart-2/10 to-transparent', 'from-primary/20 via-chart-4/25 to-transparent', 'from-accent/35 via-chart-3/20 to-transparent'];
+const roleTones = [
+  { tile: 'bg-blue text-white', dot: 'bg-blue', panel: 'bg-blue', text: 'text-white', soft: 'border-white/25', dim: 'text-white/75' },
+  { tile: 'bg-yellow text-foreground', dot: 'bg-yellow', panel: 'bg-yellow', text: 'text-foreground', soft: 'border-foreground/20', dim: 'text-foreground/75' },
+  { tile: 'bg-green text-white', dot: 'bg-green', panel: 'bg-green', text: 'text-white', soft: 'border-white/25', dim: 'text-white/75' },
+  { tile: 'bg-purple text-white', dot: 'bg-purple', panel: 'bg-purple', text: 'text-white', soft: 'border-white/25', dim: 'text-white/75' },
+];
 
 export default function Features() {
   const { products } = siteConfig;
   const [activeTab, setActiveTab] = useState(0);
+  const active = products[activeTab];
+  const tone = roleTones[activeTab % roleTones.length];
+  const Preview = portalPreviews[active.id];
 
   return (
-    <section className="relative overflow-hidden py-24" id="features">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Role-based Experience</p>
-          <h2 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">One platform. Three powerful journeys.</h2>
-          <DoodleBrush className="mx-auto mt-2 h-4 w-28" />
-          <p className="mt-4 text-lg text-muted-foreground">
-            Every role gets a tailored workspace with tools designed for the work they actually do.
-          </p>
-        </div>
+    <section className="relative py-14 lg:py-20" id="features" data-chapter="N.002 · The Platform">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <ChapterHead number="N.002" label="The Platform" right="Role-based workspaces" />
 
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="space-y-3">
+        <MaskReveal className="mt-10">
+          <h2 className="chapter-title max-w-5xl">
+            One platform. <Mark tone="blue">Four journeys.</Mark>
+          </h2>
+        </MaskReveal>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          Every role gets a tailored workspace with tools designed for the work they actually do.
+        </p>
+
+        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+          <div className="flex flex-col gap-3">
             {products.map((product, index) => {
-              const Icon = icons[index] ?? UserGroupIcon;
               const isActive = activeTab === index;
+              const t = roleTones[index % roleTones.length];
 
               return (
                 <button
                   key={product.id}
                   onClick={() => setActiveTab(index)}
-                  className={`w-full rounded-3xl border p-5 text-left transition-all ${
+                  aria-pressed={isActive}
+                  className={`group rounded-2xl p-6 text-left transition-all ${
                     isActive
-                      ? 'border-primary/30 bg-white shadow-md shadow-primary/10'
-                      : 'border-border/80 bg-white/70 hover:border-primary/20 hover:bg-white'
+                      ? `${t.tile} shadow-md`
+                      : 'bg-card text-foreground shadow-sm hover:-translate-y-0.5 hover:shadow-md'
                   }`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ${isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-foreground'}`}>
-                      <Icon className="h-6 w-6" />
-                    </div>
+                  <div className="flex items-baseline gap-5">
                     <div className="flex-1">
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">{product.tagline}</p>
-                      <h3 className="mt-1 text-2xl font-semibold text-foreground">{product.name}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
+                      <h3 className="font-display text-2xl font-bold tracking-[-0.01em] lg:text-[1.7rem]">
+                        {product.name}
+                      </h3>
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden"
+                          >
+                            <p className="pt-3 text-[15px] leading-relaxed opacity-85">
+                              {product.description}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
+                    {!isActive && <span className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${t.dot}`} />}
                   </div>
                 </button>
               );
             })}
           </div>
 
-          <div className="relative rounded-[2rem] border border-border/80 bg-white p-6 shadow-lg lg:p-8">
-            <div className={`pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br ${panelTones[activeTab]}`} />
-
+          <div className="relative">
             <AnimatePresence mode="wait">
               <motion.div
-                key={products[activeTab].id}
-                initial={{ opacity: 0, y: 16 }}
+                key={active.id}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
+                exit={{ opacity: 0, y: -18 }}
                 transition={{ duration: 0.25 }}
-                className="relative"
+                className={`rounded-[1.75rem] p-7 shadow-md lg:p-10 ${tone.panel} ${tone.text}`}
               >
-                <div className="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                  Superpowers
-                </div>
-                <h3 className="mt-3 text-3xl font-semibold text-foreground">{products[activeTab].name}</h3>
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] opacity-75">
+                  {active.tagline}
+                </span>
+                <h3 className="font-display mt-3 text-3xl font-bold tracking-[-0.01em]">
+                  {active.name}
+                </h3>
 
-                <div className="mt-6 grid gap-3">
-                  {products[activeTab].features.slice(0, 5).map((feature, idx) => (
-                    <div key={feature} className="rounded-2xl border border-border/70 bg-white/90 p-4 shadow-sm">
-                      <div className="flex items-start justify-between gap-3">
-                        <p className="text-sm font-medium text-foreground">{feature}</p>
-                        <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold text-primary">
-                          {idx + 1}
-                        </span>
-                      </div>
-                    </div>
+                {Preview && (
+                  <div className="mt-6">
+                    <Preview />
+                  </div>
+                )}
+
+                <ul className={`mt-8 border-t ${tone.soft}`}>
+                  {active.features.map((feature) => (
+                    <li key={feature} className={`border-b py-3.5 ${tone.soft}`}>
+                      <span className="text-[15px] font-semibold">{feature}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <a
-                  href="#contact"
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm"
+                <Link
+                  href="/contact"
+                  className={`mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-transform hover:-translate-y-0.5 ${
+                    activeTab === 1 ? 'bg-foreground text-background' : 'bg-card text-foreground'
+                  }`}
                 >
-                  {products[activeTab].cta}
+                  {active.cta}
                   <ArrowRightIcon className="h-4 w-4" />
-                </a>
-                <DoodleSquiggle className="pointer-events-none absolute -bottom-5 right-2 hidden h-10 w-20 rotate-[8deg] lg:block" />
+                </Link>
               </motion.div>
             </AnimatePresence>
           </div>

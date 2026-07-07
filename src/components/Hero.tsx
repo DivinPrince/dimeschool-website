@@ -1,138 +1,194 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion';
+import { ArrowRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
-import { DoodleArrow, DoodleBurst, DoodleWave } from './Doodles';
+import { Marquee } from './Chapter';
+import { useIntroDone, EASE } from './motion/Motion';
+
+const wordPanels = [
+  { bg: 'var(--blue)', color: '#fff' },
+  { bg: 'var(--yellow)', color: 'var(--foreground)' },
+  { bg: 'var(--purple)', color: '#fff' },
+  { bg: 'var(--green)', color: '#fff' },
+];
+
+const ribbon = [
+  'AI-powered marking',
+  'Real-time grades',
+  'Biometric attendance',
+  'SMS to parents',
+  'MoMo fee tracking',
+  'Online exams',
+  'Library & e-books',
+];
 
 export default function Hero() {
-  const { hero } = siteConfig;
+  const { hero, tagline } = siteConfig;
   const [wordIndex, setWordIndex] = useState(0);
+  const introDone = useIntroDone();
+  const reduce = useReducedMotion();
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const canvasInView = useInView(canvasRef);
 
   useEffect(() => {
+    if (!canvasInView) return;
     const interval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % hero.rotatingWords.length);
-    }, 2200);
+    }, 2400);
 
     return () => clearInterval(interval);
-  }, [hero.rotatingWords.length]);
+  }, [hero.rotatingWords.length, canvasInView]);
+
+  const panel = wordPanels[wordIndex % wordPanels.length];
+  const show = reduce || introDone;
 
   return (
-    <section className="relative overflow-hidden pb-20 pt-28 lg:pb-28 lg:pt-36">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-28 top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute right-0 top-10 h-[26rem] w-[26rem] rounded-full bg-accent/35 blur-3xl" />
-        <div className="absolute bottom-8 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-chart-2/20 blur-3xl" />
+    <section
+      className="relative px-4 pt-20 sm:px-6 lg:px-6 lg:pt-4"
+      data-chapter="N.000 · Overview"
+    >
+      <div className="flex items-baseline justify-between gap-4 pb-3">
+        <span className="label-mono">{tagline}</span>
+        <span className="label-mono hidden sm:block">Kigali &middot; Rwanda</span>
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl"
-          >
-            {hero.headline}{' '}
-            <span className="relative inline-block min-w-[210px] sm:min-w-[280px] lg:min-w-[320px]">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={wordIndex}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3 }}
-                  className="font-display text-primary"
-                >
-                  {hero.rotatingWords[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
-              <DoodleWave className="absolute -bottom-5 left-0 h-4 w-full" />
-            </span>
-          </motion.h1>
+      {/* The canvas: one big rounded color frame, Units-style */}
+      <motion.div
+        ref={canvasRef}
+        initial={reduce ? false : { y: 24, opacity: 0 }}
+        animate={show ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.8, ease: EASE }}
+        className="relative overflow-hidden rounded-[2rem] bg-primary"
+      >
+        <motion.div
+          initial={reduce ? false : { x: 80, opacity: 0 }}
+          animate={show ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
+          className="absolute bottom-0 right-0 hidden h-[88%] md:block"
+        >
+          {/* sizes: 1px below md keeps hidden-on-mobile markup from
+              downloading the full-size asset */}
+          <Image
+            src="/assets/student.webp"
+            alt=""
+            width={649}
+            height={614}
+            priority
+            sizes="(max-width: 767px) 1px, 45vw"
+            className="pointer-events-none h-full w-auto object-contain object-bottom"
+          />
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
-          >
-            {hero.subheadline}
-          </motion.p>
+        {/* One product callout, not a cloud of them */}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={show ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 1.1, ease: EASE }}
+          className="pointer-events-none absolute right-[8%] top-[16%] z-20 hidden rounded-2xl bg-yellow px-4 py-3 text-foreground shadow-lg lg:block"
+        >
+          <p className="font-mono text-[9px] font-bold uppercase tracking-[0.14em] opacity-70">
+            MarkEase AI
+          </p>
+          <p className="mt-0.5 text-sm font-bold leading-none">Marked &middot; 18/20</p>
+        </motion.div>
 
-          <div className="relative mt-8 flex flex-col gap-3 sm:flex-row">
-            <div className="relative inline-flex">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/25 transition-transform hover:-translate-y-0.5"
+        <div className="relative z-10 flex min-h-[76vh] flex-col justify-between gap-10 p-7 sm:p-10 lg:p-14">
+          <div>
+            <h1 className="font-display text-[clamp(2.9rem,8.2vw,7.5rem)] font-extrabold leading-[0.92] tracking-[-0.02em] text-white">
+              <motion.span
+                className="block"
+                initial={reduce ? false : { opacity: 0, y: 28 }}
+                animate={show ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
               >
-                Schedule a Demo
+                Empower
+              </motion.span>
+              <motion.span
+                className="block"
+                initial={reduce ? false : { opacity: 0, y: 28 }}
+                animate={show ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
+              >
+                your school
+              </motion.span>
+              <motion.span
+                initial={reduce ? false : { opacity: 0, y: 24 }}
+                animate={show ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
+                className="relative inline-block"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -14 }}
+                    transition={{ duration: 0.25 }}
+                    className="inline-block rounded-[0.28em] px-[0.18em] py-[0.02em]"
+                    style={{ background: panel.bg, color: panel.color }}
+                  >
+                    {hero.rotatingWords[wordIndex].toLowerCase()}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.span>
+            </h1>
+
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              animate={show ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.55, ease: EASE }}
+              className="mt-8 max-w-xl text-lg font-medium leading-relaxed text-white/90"
+            >
+              {hero.subheadline}
+            </motion.p>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              animate={show ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
+              className="mt-8 flex flex-wrap items-center gap-2.5"
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
+              >
+                {hero.secondaryCta}
                 <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+              <a
+                href={hero.downloadUrl}
+                className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"
+              >
+                <ArrowDownTrayIcon className="h-4 w-4" />
+                {hero.downloadCta}
               </a>
-              <DoodleArrow className="pointer-events-none absolute -right-16 -top-14 hidden h-11 w-24 lg:block" />
-            </div>
-            <a
-              href="#features"
-              className="inline-flex items-center justify-center rounded-full border border-border bg-white px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-            >
-              Explore Platform
-            </a>
-            <a
-              href={hero.downloadUrl}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-            >
-              <DevicePhoneMobileIcon className="h-4 w-4 text-primary" />
-              {hero.downloadCta}
-            </a>
+            </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.35 }}
-            className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3"
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={show ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
+            className="flex flex-wrap gap-x-10 gap-y-4"
           >
             {hero.stats.map((item) => (
-              <div key={item.number} className="rounded-2xl border border-border/80 bg-white p-4 shadow-sm">
-                <div className="text-xs font-semibold uppercase tracking-widest text-primary">{item.number}</div>
-                <div className="mt-1 text-lg font-semibold text-foreground">{item.value}</div>
-                <div className="text-sm text-muted-foreground">{item.label}</div>
+              <div key={item.number} className="border-l-2 border-white/30 pl-4">
+                <p className="font-display text-xl font-extrabold leading-none text-white lg:text-2xl">
+                  {item.value}
+                </p>
+                <p className="mt-1.5 text-sm text-white/75">{item.label}</p>
               </div>
             ))}
           </motion.div>
         </div>
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 26 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.55, delay: 0.2 }}
-          className="relative mx-auto w-full max-w-[34rem]"
-        >
-          <div className="relative overflow-hidden rounded-[2rem] border border-border/80 bg-white p-3 shadow-lg sm:p-4">
-            <div className="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-secondary via-white to-accent p-0">
-              <Image
-                src="/assets/student.svg"
-                alt="DimeSchool student dashboard preview"
-                width={649}
-                height={614}
-                priority
-                className="block h-auto w-full rounded-[1.15rem] object-cover object-bottom contrast-125"
-              />
-            </div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.45, duration: 0.3 }}
-            className="absolute -bottom-4 -right-2 rounded-full bg-chart-3 px-4 py-2 text-xs font-semibold text-foreground shadow-md"
-          >
-            Built for every student
-          </motion.div>
-          <DoodleBurst className="pointer-events-none absolute -bottom-16 right-4 hidden h-10 w-10 lg:block" />
-        </motion.div>
+      <div className="mt-10">
+        <Marquee items={ribbon} className="bg-blue text-white" />
       </div>
     </section>
   );

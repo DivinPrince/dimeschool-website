@@ -175,7 +175,7 @@ export default function TeamCards() {
             Interested in joining our team?
           </p>
           <a
-            href="#careers"
+            href="/careers"
             className="inline-block px-8 py-3 border border-border rounded-xl text-sm uppercase tracking-wide text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
           >
             View Open Positions

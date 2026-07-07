@@ -2,99 +2,105 @@
 
 import { motion } from 'framer-motion';
 import { siteConfig } from '../config/site.config';
-import { DoodleBrush, DoodleWave } from './Doodles';
+import { ChapterHead, Mark, RevealText } from './Chapter';
+import { CanvasZoom, MaskReveal } from './motion/Motion';
+import Snapshot from './graphics/Snapshot';
 
-const cardTones = ['bg-chart-2/10', 'bg-chart-4/20', 'bg-accent/35'];
+/* The problem, in pictures: what LARS 2025 and every staff room already know. */
+const evidence = [
+  {
+    src: '/assets/photos/crowded-classroom.jpg',
+    alt: 'A packed classroom of students sharing benches',
+    caption: 'One teacher. Sixty learners.',
+    sub: 'LARS 2025 · 60:1 in primary',
+  },
+  {
+    src: '/assets/photos/paper-records.jpg',
+    alt: 'Students holding paper booklets and handouts',
+    caption: 'Records that live on paper.',
+    sub: 'Registers · receipts · reports',
+  },
+  {
+    src: '/assets/photos/teacher-chalkboard.jpg',
+    alt: 'A teacher explaining at the board while holding a paper',
+    caption: 'Admin hours are teaching hours lost.',
+    sub: 'The daily trade-off',
+  },
+];
 
 export default function Manifesto() {
   const { manifesto } = siteConfig;
 
   return (
-    <section className="relative overflow-hidden py-24 lg:py-28" id="manifesto">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">The Shift</p>
-            <h2 className="mt-4 text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-              {manifesto.title}
-            </h2>
-            <DoodleBrush className="mt-2 h-4 w-32" />
-          </div>
-          <motion.blockquote
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-3xl border border-primary/20 bg-white p-6 text-lg text-muted-foreground shadow-sm"
-          >
-            <DoodleWave className="pointer-events-none absolute -top-5 right-6 h-6 w-24" />
-            “{manifesto.quote}”
-          </motion.blockquote>
-        </div>
+    <section
+      className="relative px-4 py-6 sm:px-6 lg:px-6 lg:py-8"
+      id="manifesto"
+      data-chapter="N.001 · The Problem"
+    >
+      <CanvasZoom className="bg-primary px-5 py-16 text-white sm:px-8 lg:px-12 lg:py-24">
+        <ChapterHead number="N.001" label="The Problem" right="Why schools switch" />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <MaskReveal className="mt-10">
+          <h2 className="chapter-title max-w-5xl">
+            Schools are drowning in <Mark tone="yellow">administrative chaos</Mark>
+          </h2>
+        </MaskReveal>
+
+        <div className="mt-16 border-t border-white/30">
           {manifesto.timeline.map((item, index) => (
             <motion.article
               key={item.year}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              className={`rounded-3xl border border-border/80 p-6 shadow-sm ${cardTones[index % cardTones.length]}`}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: index * 0.07 }}
+              className="grid gap-3 border-b border-white/30 py-8 md:grid-cols-[140px_1fr_1.4fr] md:gap-8 lg:py-10"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">{item.year}</p>
-              <h3 className="mt-3 text-2xl font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+                {item.year}
+              </span>
+              <h3 className="font-display text-2xl font-bold tracking-[-0.01em] lg:text-3xl">
+                {index === 2 ? <Mark tone="yellow">{item.title}</Mark> : item.title}
+              </h3>
+              <p className="max-w-xl text-base leading-relaxed text-white/80">{item.description}</p>
             </motion.article>
           ))}
         </div>
 
-        <div className="mt-16 grid gap-5 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-3 sm:gap-5 lg:gap-8">
+          {evidence.map((photo) => (
+            <Snapshot key={photo.src} {...photo} />
+          ))}
+        </div>
+
+        <div className="mt-16 grid gap-x-10 gap-y-12 md:grid-cols-3">
           {manifesto.principles.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="rounded-3xl border border-border/80 bg-white p-7 shadow-sm"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: index * 0.09 }}
+              className="rounded-3xl bg-white/10 p-7"
             >
-              <span className="inline-flex rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 className="mt-4 text-2xl font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              <h3 className="font-display text-2xl font-bold tracking-[-0.01em]">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-white/80">{item.description}</p>
             </motion.article>
           ))}
         </div>
 
-        <div className="mt-14 grid gap-3 md:grid-cols-3">
-          {manifesto.statements.map((text, index) => (
-            <motion.div
-              key={text}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.06 }}
-              className="rounded-2xl border border-primary/20 bg-primary/5 px-5 py-4 text-center text-base font-semibold text-foreground"
-            >
-              {text}
-            </motion.div>
-          ))}
+        <div className="mt-24 lg:mt-28">
+          <RevealText
+            text={manifesto.founderMessage}
+            className="font-display mx-auto max-w-4xl text-center text-[clamp(1.5rem,3.4vw,2.75rem)] font-bold leading-[1.2] tracking-[-0.01em]"
+          />
+          <p className="mt-8 text-center font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+            Founder&apos;s message &middot; Dime Inc.
+          </p>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative mt-14 rounded-[2rem] border border-border/80 bg-white p-8 shadow-md lg:p-10"
-        >
-          <DoodleBrush className="pointer-events-none absolute -right-4 -top-6 hidden h-5 w-24 rotate-6 lg:block" />
-          <p className="text-base leading-relaxed text-muted-foreground lg:text-lg">“{manifesto.founderMessage}”</p>
-          <div className="mt-5 inline-flex items-center rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
-            Founder's Message
-          </div>
-        </motion.div>
-      </div>
+      </CanvasZoom>
     </section>
   );
 }

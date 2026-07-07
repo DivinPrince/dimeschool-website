@@ -49,7 +49,7 @@ const Careers = () => {
                   <div className="space-y-2">
                     {job.requirements.map((req, idx) => (
                       <div key={idx} className="flex items-start text-xs text-muted-foreground">
-                        <span className="mr-2">—</span>
+                        <span className="mr-2">·</span>
                         {req}
                       </div>
                     ))}

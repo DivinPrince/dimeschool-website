@@ -13,19 +13,19 @@ import Testimonials from '../components/Testimonials';
 
 export default function Home() {  
   return (
-    <div className="bg-background overflow-x-clip">
+    <main id="top" className="bg-background overflow-x-clip lg:pl-44">
       <Hero />
       <Manifesto />
       <Features />
+      <Integrations />
       <WhyChoose />
       <ProcessFlow />
-      <Integrations />
       <Pricing />
       <Testimonials />
       <FAQ />
       <Portals />
       <Contact />
       <Footer />
-    </div>
+    </main>
   );
 } 
