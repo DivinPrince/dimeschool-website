@@ -159,13 +159,13 @@ export default function Hero() {
                 {hero.secondaryCta}
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
-              <a
+              <Link
                 href={hero.downloadUrl}
                 className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"
               >
                 <ArrowDownTrayIcon className="h-4 w-4" />
                 {hero.downloadCta}
-              </a>
+              </Link>
             </motion.div>
           </div>
 

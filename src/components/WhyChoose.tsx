@@ -38,7 +38,7 @@ function CardGlyph({ index }: { index: number }) {
 
 const proofStats = [
   { value: '5', label: 'Role portals: school, teacher, parent, student, librarian', className: 'bg-blue text-white' },
-  { value: '1', label: 'Android app for every role, updated over the air', className: 'bg-yellow text-foreground' },
+  { value: '3', label: 'Android apps, for staff, families, and MarkEase, updated over the air', className: 'bg-yellow text-foreground' },
   { value: '4', label: 'Payment methods tracked: cash, MoMo, bank, cheque', className: 'bg-green text-white' },
   { value: 'SMS', label: 'Parent messaging built into the platform', className: 'bg-purple text-white' },
 ];

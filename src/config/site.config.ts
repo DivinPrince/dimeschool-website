@@ -4,15 +4,22 @@
  * The Complete School Management Platform
  */
 
-// Android APK served by the DimeSchool OTA Worker (dimeschool repo, apps/ota).
-const ANDROID_APK_URL = "https://dimeschool-ota.dimerw.workers.dev/download/dimeschool.apk";
+// The live apps (dimeschool_v2). Staff sign in to the DimeSchool app, parents
+// and students to Portal; each role link opens that role's sign-in screen.
+const APP_URL = "https://app.dimeschool.tech";
+const PORTAL_URL = "https://portal.dimeschool.tech";
+const MARKEASE_URL = "https://markease-v2.dimeschool.tech";
+
+// Each release workflow publishes a stable.json here listing its current
+// installers; /download reads them, so new releases need no site change.
+const RELEASES_URL = "https://releases.dimeschool.tech";
 
 export const siteConfig = {
   // Basic Site Info
   name: "DimeSchool",
   tagline: "The Complete School Management Platform",
   description: "The school management platform with MarkEase AI marking built in. From enrollment to graduation, DimeSchool streamlines every aspect of school operations for administrators, teachers, parents, and students.",
-  domain: "dimeschool.com",
+  domain: "dimeschool.tech",
   
   // Contact Information
   contact: {
@@ -40,8 +47,8 @@ export const siteConfig = {
     subheadline: "The only school platform with MarkEase AI marking built in. DimeSchool runs your whole school, from enrollment and fees to attendance and communication, while MarkEase grades the papers in minutes, not weekends.",
     primaryCta: "Get Started Free",
     secondaryCta: "Schedule a Demo",
-    downloadCta: "Download the App",
-    downloadUrl: ANDROID_APK_URL,
+    downloadCta: "Download the Apps",
+    downloadUrl: "/download",
     stats: [
       { number: "01", value: "MarkEase AI", label: "Marking built-in" },
       { number: "02", value: "5 Portals", label: "One login" },
@@ -262,7 +269,7 @@ export const siteConfig = {
     },
     {
       question: "Can parents access the system on mobile?",
-      answer: "Yes. Every portal is fully responsive in any mobile browser, and the free DimeSchool Android app bundles all portals in one place with automatic over-the-air updates.",
+      answer: "Yes. Every portal works in any mobile browser, and parents and students can install the free DimeSchool Portal app for Android. Staff have their own DimeSchool app, and both apps update themselves over the air.",
     },
     {
       question: "How is student data protected?",
@@ -301,12 +308,13 @@ export const siteConfig = {
       {
         title: "Portals",
         links: [
-          { name: "School Portal", href: "https://school.dimeschool.tech" },
-          { name: "Teacher Portal", href: "https://teacher.dimeschool.tech" },
-          { name: "Parent Portal", href: "https://parent.dimeschool.tech" },
-          { name: "Student Portal", href: "https://student.dimeschool.tech" },
-          { name: "Librarian Portal", href: "https://librarian.dimeschool.tech" },
-          { name: "Android App", href: ANDROID_APK_URL },
+          { name: "School Portal", href: `${APP_URL}/login?role=school_admin` },
+          { name: "Teacher Portal", href: `${APP_URL}/login?role=teacher` },
+          { name: "Parent Portal", href: `${PORTAL_URL}/parent` },
+          { name: "Student Portal", href: `${PORTAL_URL}/student` },
+          { name: "Librarian Portal", href: `${APP_URL}/login?role=librarian` },
+          { name: "MarkEase App", href: MARKEASE_URL },
+          { name: "Download the Apps", href: "/download" },
         ],
       },
       {
@@ -446,38 +454,70 @@ export const siteConfig = {
     {
       name: 'School Portal',
       description: 'Records, attendance, finance, and communication in one dashboard.',
-      href: 'https://school.dimeschool.tech',
+      href: `${APP_URL}/login?role=school_admin`,
     },
     {
       name: 'Teacher Portal',
       description: 'Classes, assessments, online exams, and AI-powered grading.',
-      href: 'https://teacher.dimeschool.tech',
+      href: `${APP_URL}/login?role=teacher`,
     },
     {
       name: 'Parent Portal',
       description: 'Real-time grades, per-child analytics, and fee balances.',
-      href: 'https://parent.dimeschool.tech',
+      href: `${PORTAL_URL}/parent`,
     },
     {
       name: 'Student Portal',
       description: 'Grades, online exams, an AI study tutor, and e-books.',
-      href: 'https://student.dimeschool.tech',
+      href: `${PORTAL_URL}/student`,
     },
     {
       name: 'Librarian Portal',
       description: 'Book catalog, student loans, and whole-class sets.',
-      href: 'https://librarian.dimeschool.tech',
+      href: `${APP_URL}/login?role=librarian`,
     },
   ],
 
   // Mobile App (shown under the portals grid)
   mobileApp: {
     title: "Take DimeSchool everywhere",
-    description: "Every portal in one Android app, with instant over-the-air updates so you always run the latest version.",
-    cta: "Download for Android",
-    note: "Free APK · Android 7.0+",
-    href: ANDROID_APK_URL,
+    description: "A DimeSchool app for staff and a Portal app for parents and students, both updated over the air so you always run the latest version.",
+    cta: "Get the Apps",
+    note: "Free · Android 7.0+",
+    href: "/download",
   },
+
+  // Downloads (/download). `manifest` is the app's stable.json on the release
+  // bucket; `web` is where the same app opens in a browser.
+  apps: [
+    {
+      id: "dimeschool",
+      name: "DimeSchool",
+      audience: "Administrators, teachers, librarians & staff",
+      description: "The whole school on your phone: classes, attendance, the gradebook, and library loans.",
+      web: APP_URL,
+      manifest: `${RELEASES_URL}/dimeschool/stable.json`,
+      tone: "bg-blue text-white",
+    },
+    {
+      id: "portal",
+      name: "DimeSchool Portal",
+      audience: "Parents & students",
+      description: "Grades the moment they're published, report cards, assessments, and the e-book library.",
+      web: PORTAL_URL,
+      manifest: `${RELEASES_URL}/portal/stable.json`,
+      tone: "bg-green text-white",
+    },
+    {
+      id: "markease",
+      name: "MarkEase",
+      audience: "Teachers marking papers",
+      description: "AI marking for handwritten answer papers, on the desktop or your phone.",
+      web: MARKEASE_URL,
+      manifest: `${RELEASES_URL}/markease/stable.json`,
+      tone: "bg-yellow text-foreground",
+    },
+  ],
 
   // Integrations
   integrations: {

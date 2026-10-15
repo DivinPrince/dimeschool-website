@@ -4,8 +4,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/outline';
 
 /**
- * The Android app in one glance: every portal as a color tile, plus the
- * over-the-air update toast, the two things that make the app worth having.
+ * The Android apps in one glance: every role as a color tile, plus the
+ * over-the-air update toast, the two things that make the apps worth having.
  */
 
 const tiles = [
@@ -24,7 +24,7 @@ export default function PhoneMockup({ className = '' }: { className?: string }) 
       whileInView={{ opacity: 1, y: 0, rotate: 3 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ type: 'spring', stiffness: 80, damping: 15 }}
-      aria-label="Illustration: the DimeSchool Android app with one tile per portal"
+      aria-label="Illustration: the DimeSchool Android apps with one tile per role"
       className={`relative w-48 shrink-0 rounded-[2.2rem] bg-foreground p-2 shadow-lg will-change-transform sm:w-52 ${className}`}
     >
       <div className="overflow-hidden rounded-[1.75rem] bg-cream text-foreground">
@@ -40,7 +40,7 @@ export default function PhoneMockup({ className = '' }: { className?: string }) 
             dimeschool<span className="text-primary">.</span>
           </p>
           <p className="font-mono text-[7px] uppercase tracking-[0.12em] text-muted-foreground">
-            Every portal · one app
+            Every role · on Android
           </p>
 
           <div className="mt-2.5 grid grid-cols-2 gap-1.5">

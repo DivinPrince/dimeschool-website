@@ -6,7 +6,7 @@ import { createPageMetadata } from '@/lib/seo';
 export const metadata: Metadata = createPageMetadata({
   title: 'Portals',
   description:
-    'Five role-based portals, one login: School, Teacher, Parent, Student, and Librarian — plus the free DimeSchool Android app with every portal and automatic over-the-air updates.',
+    'Five role-based portals: School, Teacher, Parent, Student, and Librarian — plus free Android apps for staff and for parents and students, with automatic over-the-air updates.',
   path: '/portals',
 });
 

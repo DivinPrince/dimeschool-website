@@ -15,6 +15,7 @@ const staticRoutes: { path: string; changeFrequency: ChangeFrequency; priority: 
   { path: '/about', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/how-it-works', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/portals', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/download', changeFrequency: 'weekly', priority: 0.7 },
   { path: '/faq', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/careers', changeFrequency: 'weekly', priority: 0.5 },
   { path: '/privacy', changeFrequency: 'yearly', priority: 0.3 },

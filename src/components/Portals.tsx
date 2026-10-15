@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { siteConfig } from '../config/site.config';
@@ -81,13 +82,13 @@ export default function Portals() {
           </div>
           <PhoneMockup className="mx-auto md:-mb-24 md:mx-0" />
           <div className="shrink-0">
-            <a
+            <Link
               href={mobileApp.href}
               className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"
             >
               <ArrowDownTrayIcon className="h-4 w-4" />
               {mobileApp.cta}
-            </a>
+            </Link>
             <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 sm:text-center">
               {mobileApp.note}
             </p>
