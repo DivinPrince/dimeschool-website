@@ -20,7 +20,12 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function installer(value: unknown): Installer | null {
-  if (!isRecord(value) || typeof value.name !== 'string' || typeof value.url !== 'string') {
+  if (
+    !isRecord(value) ||
+    typeof value.name !== 'string' ||
+    typeof value.url !== 'string' ||
+    !value.url.startsWith('https://')
+  ) {
     return null;
   }
   return {
