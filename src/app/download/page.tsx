@@ -5,8 +5,6 @@ import { siteConfig } from '@/config/site.config';
 import { getRelease } from '@/lib/releases';
 import { createPageMetadata } from '@/lib/seo';
 
-export const revalidate = 300;
-
 export const metadata: Metadata = createPageMetadata({
   title: 'Download the Apps',
   description:

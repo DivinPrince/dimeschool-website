@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site.config';
 
+export const dynamic = 'force-static';
+
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
 
 // Every entry here is a real route under src/app. When adding a page, add its

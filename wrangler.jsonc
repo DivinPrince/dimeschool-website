@@ -1,0 +1,16 @@
+{
+  // Marketing site — static-assets Worker serving the Next.js export in out/.
+  // .github/workflows/deploy.yml builds and deploys it; by hand: bun run deploy
+  "name": "dimeschool-website",
+  "account_id": "366298e9a74e23a236323c0a5d39e896",
+  "compatibility_date": "2026-08-22",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page",
+  },
+  "routes": [
+    { "pattern": "dimeschool.tech", "custom_domain": true },
+    { "pattern": "www.dimeschool.tech", "custom_domain": true },
+  ],
+}
