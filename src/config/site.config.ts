@@ -457,37 +457,43 @@ export const siteConfig = {
     },
   ],
   
-  // Portals. `art` is the illustration on that portal's own sign-in screen.
+  // Portals. `art` is the illustration on that portal's own sign-in screen;
+  // `tone` is that illustration's background, so the card and art are one color.
   portals: [
     {
       name: 'School Portal',
       description: 'Records, attendance, finance, and communication in one dashboard.',
       href: `${APP_URL}/login?role=school_admin`,
       art: '/illustrations/administrator.svg',
+      tone: 'bg-[#FFE82C] text-foreground',
     },
     {
       name: 'Teacher Portal',
       description: 'Classes, assessments, online exams, and AI-powered grading.',
       href: `${APP_URL}/login?role=teacher`,
       art: '/illustrations/teacher.svg',
+      tone: 'bg-[#FBD623] text-foreground',
     },
     {
       name: 'Parent Portal',
       description: 'Real-time grades, per-child analytics, and fee balances.',
       href: `${PORTAL_URL}/parent`,
       art: '/illustrations/parent.svg',
+      tone: 'bg-white text-foreground',
     },
     {
       name: 'Student Portal',
       description: 'Grades, online exams, an AI study tutor, and e-books.',
       href: `${PORTAL_URL}/student`,
       art: '/illustrations/student.svg',
+      tone: 'bg-[#EF3B1D] text-white',
     },
     {
       name: 'Librarian Portal',
       description: 'Book catalog, student loans, and whole-class sets.',
       href: `${APP_URL}/login?role=librarian`,
       art: '/illustrations/librarian.svg',
+      tone: 'bg-[#FE8C28] text-foreground',
     },
   ],
 
