@@ -30,7 +30,7 @@ export default function FAQ() {
             </MaskReveal>
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
               Share your school structure and we will map the migration, setup timeline, and portal
-              rollout with your team. Response in under 24 hours on weekdays; live demos run 30
+              rollout with your team. Response in under 24 hours on weekdays; live demos run 45
               minutes with Q&amp;A.
             </p>
             <Link

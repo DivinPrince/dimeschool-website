@@ -27,7 +27,7 @@ const ribbon = [
 ];
 
 export default function Hero() {
-  const { hero, tagline } = siteConfig;
+  const { hero, tagline, contact } = siteConfig;
   const [wordIndex, setWordIndex] = useState(0);
   const introDone = useIntroDone();
   const reduce = useReducedMotion();
@@ -152,13 +152,15 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
               className="mt-8 flex flex-wrap items-center gap-2.5"
             >
-              <Link
-                href="/contact"
+              <a
+                href={contact.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
               >
                 {hero.secondaryCta}
                 <ArrowRightIcon className="h-4 w-4" />
-              </Link>
+              </a>
               <Link
                 href={hero.downloadUrl}
                 className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground transition-transform hover:-translate-y-0.5"

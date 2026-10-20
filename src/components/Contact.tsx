@@ -1,5 +1,6 @@
 'use client';
 
+import type { FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../config/site.config';
 import { ChapterHead, Mark } from './Chapter';
@@ -14,6 +15,29 @@ const commitments = [
 
 const inputClass =
   'mt-2 w-full rounded-xl border-2 border-foreground/20 bg-card px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary';
+
+/**
+ * Opens the booking page with what the visitor typed already filled in (Cal.com
+ * reads `name`, `email`, and `notes` from the URL), so they only pick a time.
+ */
+function bookDemo(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const field = (key: string) => String(data.get(key) ?? '').trim();
+  const notes = [
+    field('school') && `School: ${field('school')}`,
+    field('size') && `Students: ${field('size')}`,
+    field('message'),
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const url = new URL(siteConfig.contact.demoUrl);
+  url.searchParams.set('name', field('name'));
+  url.searchParams.set('email', field('email'));
+  if (notes) url.searchParams.set('notes', notes);
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
 
 export default function Contact() {
   const { contact } = siteConfig;
@@ -91,6 +115,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ delay: 0.08 }}
+            onSubmit={bookDemo}
             className="rounded-[1.75rem] bg-card p-7 shadow-md lg:p-10"
           >
             <div className="grid gap-5 md:grid-cols-2">
@@ -126,12 +151,15 @@ export default function Contact() {
               />
             </label>
 
-            <button
-              type="submit"
-              className="mt-7 inline-flex rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"
-            >
-              Book my demo
-            </button>
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <button
+                type="submit"
+                className="inline-flex rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              >
+                Book my demo
+              </button>
+              <p className="text-sm text-muted-foreground">Next, pick a time on our calendar.</p>
+            </div>
           </motion.form>
         </div>
       </div>

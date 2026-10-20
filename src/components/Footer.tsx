@@ -31,12 +31,14 @@ export default function Footer() {
               </h2>
             </MaskReveal>
           </div>
-          <Link
-            href="/contact"
+          <a
+            href={contact.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5 lg:self-end"
           >
             Book a live demo
-          </Link>
+          </a>
         </div>
 
         <div className="mt-16 grid gap-x-8 gap-y-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-6">

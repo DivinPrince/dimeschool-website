@@ -10,6 +10,9 @@ const APP_URL = "https://app.dimeschool.tech";
 const PORTAL_URL = "https://portal.dimeschool.tech";
 const MARKEASE_URL = "https://markease-v2.dimeschool.tech";
 
+// Every "book a demo" call to action opens this booking page.
+const DEMO_URL = "https://cal.com/dimeincltd/dimeschool-demo";
+
 // Each release workflow publishes a stable.json here listing its current
 // installers; /download reads them, so new releases need no site change.
 const RELEASES_URL = "https://releases.dimeschool.tech";
@@ -24,6 +27,7 @@ export const siteConfig = {
   // Contact Information
   contact: {
     email: "team@dime.rw",
+    demoUrl: DEMO_URL,
     phones: ["+250 798 579 079", "+250 729 355 090"],
     address: {
       line1: "Kigali Innovation City",

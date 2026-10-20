@@ -53,15 +53,17 @@ export default function Navbar() {
           </Link>
         ))}
 
-        <Link
-          href="/contact"
+        <a
+          href={contact.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group flex h-20 flex-col justify-between rounded-xl bg-purple p-3 text-white transition-transform hover:translate-y-[-2px]"
         >
           <ArrowUpRightIcon className="h-3.5 w-3.5 self-end transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           <span className="font-display text-sm font-bold leading-tight">
             Book a<br />Demo
           </span>
-        </Link>
+        </a>
 
         <div className="flex items-center justify-center gap-3 rounded-xl bg-foreground p-3 text-background">
           {social.linkedin && (
@@ -141,14 +143,16 @@ export default function Navbar() {
                       </span>
                     </Link>
                   ))}
-                  <Link
-                    href="/contact"
+                  <a
+                    href={contact.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="col-span-2 flex items-center justify-between rounded-xl bg-purple p-4 text-white"
                   >
                     <span className="font-display text-sm font-bold">Book a Demo</span>
                     <ArrowUpRightIcon className="h-4 w-4" />
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             )}

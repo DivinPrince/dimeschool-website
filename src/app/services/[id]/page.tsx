@@ -85,13 +85,15 @@ export default async function ServicePage({
               </ul>
 
               <div className="mt-8 flex flex-wrap gap-2.5">
-                <Link
-                  href="/contact"
+                <a
+                  href={siteConfig.contact.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
                 >
                   Book a live demo
                   <ArrowRightIcon className="h-4 w-4" />
-                </Link>
+                </a>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center justify-center rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground shadow-sm transition-transform hover:-translate-y-0.5"
