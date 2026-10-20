@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowRightIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import PageShell from '@/components/PageShell';
 import { ChapterHead, Mark, type MarkTone } from '@/components/Chapter';
+import Illustration from '@/components/graphics/Illustration';
 import { createPageMetadata } from '@/lib/seo';
 import { siteConfig } from '@/config/site.config';
 
@@ -68,34 +69,49 @@ export default async function ServicePage({
           </p>
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-            <ul className="border-t-2 border-foreground/80">
-              {product.features.map((feature, idx) => (
-                <li
-                  key={feature}
-                  className="flex items-baseline gap-4 border-b border-border py-3.5"
-                >
-                  <span className="font-mono text-[11px] tracking-[0.1em] text-muted-foreground">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-[15px] font-semibold text-foreground">{feature}</span>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <ul className="border-t-2 border-foreground/80">
+                {product.features.map((feature, idx) => (
+                  <li
+                    key={feature}
+                    className="flex items-baseline gap-4 border-b border-border py-3.5"
+                  >
+                    <span className="font-mono text-[11px] tracking-[0.1em] text-muted-foreground">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-[15px] font-semibold text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
-            <div className="flex flex-col gap-2.5 self-start">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
-              >
-                Book a live demo
-                <ArrowRightIcon className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center justify-center rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground shadow-sm transition-transform hover:-translate-y-0.5"
-              >
-                See pricing
-              </Link>
+              <div className="mt-8 flex flex-wrap gap-2.5">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-bold text-background transition-transform hover:-translate-y-0.5"
+                >
+                  Book a live demo
+                  <ArrowRightIcon className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center rounded-full bg-card px-7 py-4 text-sm font-bold text-foreground shadow-sm transition-transform hover:-translate-y-0.5"
+                >
+                  See pricing
+                </Link>
+              </div>
+            </div>
+
+            {/* The role's sign-in illustration: beside the list, or above it on phones. */}
+            <div
+              className={`grid gap-2.5 self-start max-lg:order-first ${product.art.length > 1 ? 'grid-cols-2' : ''}`}
+            >
+              {product.art.map((src) => (
+                <Illustration
+                  key={src}
+                  src={src}
+                  className={product.art.length > 1 ? 'rounded-[1.25rem]' : 'rounded-[1.75rem]'}
+                />
+              ))}
             </div>
           </div>
 

@@ -7,6 +7,7 @@ import { siteConfig } from '../config/site.config';
 import { ChapterHead, Mark } from './Chapter';
 import { MaskReveal } from './motion/Motion';
 import PhoneMockup from './graphics/PhoneMockup';
+import Illustration from './graphics/Illustration';
 
 const tileTones = [
   'bg-blue text-white',
@@ -45,20 +46,27 @@ export default function Portals() {
               transition={{ duration: 0.6, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
               className="h-full"
             >
+              {/* Side by side until the five-up row, where the illustration
+                  stacks on top like the role cards on the sign-in screens. */}
               <a
                 href={portal.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group flex h-full min-h-72 flex-col justify-between rounded-[1.25rem] p-6 transition-transform hover:-translate-y-1 ${tileTones[index % tileTones.length]}`}
+                className={`group flex h-full items-center gap-4 rounded-[1.25rem] p-3 transition-transform hover:-translate-y-1 lg:flex-col lg:items-stretch lg:gap-5 ${tileTones[index % tileTones.length]}`}
               >
-                <span className="flex h-10 w-10 items-center justify-center self-end rounded-full bg-white/20 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  <ArrowUpRightIcon className="h-5 w-5" />
-                </span>
-                <div>
-                  <h3 className="font-display text-[1.7rem] font-extrabold leading-[1.02] tracking-[-0.01em]">
+                <Illustration
+                  src={portal.art}
+                  className="w-28 shrink-0 rounded-[0.875rem] sm:w-36 lg:w-auto"
+                />
+                <div className="py-1 pr-2 lg:px-3 lg:pt-0 lg:pb-3">
+                  <h3 className="font-display text-[1.7rem] font-extrabold leading-[1.02] tracking-[-0.01em] lg:text-[1.3rem] xl:text-[1.7rem]">
                     {portal.name.replace(' Portal', '')}
                     <br />
                     Portal
+                    <ArrowUpRightIcon
+                      strokeWidth={2.5}
+                      className="ml-1.5 inline h-[0.7em] w-[0.7em] align-baseline transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed opacity-85">{portal.description}</p>
                 </div>

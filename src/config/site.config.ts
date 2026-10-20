@@ -128,6 +128,7 @@ export const siteConfig = {
   products: [
     {
       id: "administrators",
+      art: ["/illustrations/administrator.svg"],
       name: "For Administrators",
       tagline: "Complete Operations Management",
       description: "Run the whole school from one dashboard: records, enrollment, attendance, finance, and communication. Find any student in seconds and keep every change on an audit trail.",
@@ -144,6 +145,7 @@ export const siteConfig = {
     },
     {
       id: "teachers",
+      art: ["/illustrations/teacher.svg"],
       name: "For Teachers",
       tagline: "AI-Powered Teaching Tools",
       description: "Everything you need to run your classes. Create assessments and online exams, grade handwritten papers with AI assistance, and publish results parents see instantly.",
@@ -159,6 +161,7 @@ export const siteConfig = {
     },
     {
       id: "parents-students",
+      art: ["/illustrations/parent.svg", "/illustrations/student.svg"],
       name: "For Parents & Students",
       tagline: "Real-Time Visibility",
       description: "Parents see grades the moment teachers publish them, with per-child analytics and fee balances. Students get their own portal, no email address required.",
@@ -175,6 +178,7 @@ export const siteConfig = {
     },
     {
       id: "librarians",
+      art: ["/illustrations/librarian.svg"],
       name: "For Librarians",
       tagline: "The Library, Organized",
       description: "A dedicated librarian portal tracks every book from donation to shelf to student hands: individual loans, whole-class sets, and overdue follow-ups without extra software.",
@@ -449,32 +453,37 @@ export const siteConfig = {
     },
   ],
   
-  // Portals
+  // Portals. `art` is the illustration on that portal's own sign-in screen.
   portals: [
     {
       name: 'School Portal',
       description: 'Records, attendance, finance, and communication in one dashboard.',
       href: `${APP_URL}/login?role=school_admin`,
+      art: '/illustrations/administrator.svg',
     },
     {
       name: 'Teacher Portal',
       description: 'Classes, assessments, online exams, and AI-powered grading.',
       href: `${APP_URL}/login?role=teacher`,
+      art: '/illustrations/teacher.svg',
     },
     {
       name: 'Parent Portal',
       description: 'Real-time grades, per-child analytics, and fee balances.',
       href: `${PORTAL_URL}/parent`,
+      art: '/illustrations/parent.svg',
     },
     {
       name: 'Student Portal',
       description: 'Grades, online exams, an AI study tutor, and e-books.',
       href: `${PORTAL_URL}/student`,
+      art: '/illustrations/student.svg',
     },
     {
       name: 'Librarian Portal',
       description: 'Book catalog, student loans, and whole-class sets.',
       href: `${APP_URL}/login?role=librarian`,
+      art: '/illustrations/librarian.svg',
     },
   ],
 
@@ -488,7 +497,8 @@ export const siteConfig = {
   },
 
   // Downloads (/download). `manifest` is the app's stable.json on the release
-  // bucket; `web` is where the same app opens in a browser.
+  // bucket; `web` is where the same app opens in a browser; `art` shows who
+  // it's for.
   apps: [
     {
       id: "dimeschool",
@@ -498,6 +508,7 @@ export const siteConfig = {
       web: APP_URL,
       manifest: `${RELEASES_URL}/dimeschool/stable.json`,
       tone: "bg-blue text-white",
+      art: ["/illustrations/staff.svg"],
     },
     {
       id: "portal",
@@ -507,6 +518,7 @@ export const siteConfig = {
       web: PORTAL_URL,
       manifest: `${RELEASES_URL}/portal/stable.json`,
       tone: "bg-green text-white",
+      art: ["/illustrations/parent.svg", "/illustrations/student.svg"],
     },
     {
       id: "markease",
@@ -516,6 +528,7 @@ export const siteConfig = {
       web: MARKEASE_URL,
       manifest: `${RELEASES_URL}/markease/stable.json`,
       tone: "bg-yellow text-foreground",
+      art: ["/illustrations/teacher.svg"],
     },
   ],
 

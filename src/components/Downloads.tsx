@@ -8,6 +8,7 @@ import type { SiteConfig } from '../config/site.config';
 import { formatSize, type AppRelease, type Installer } from '../lib/releases';
 import { ChapterHead, Mark } from './Chapter';
 import { MaskReveal } from './motion/Motion';
+import Illustration from './graphics/Illustration';
 
 type App = SiteConfig['apps'][number];
 type Icon = ComponentType<SVGProps<SVGSVGElement>>;
@@ -45,6 +46,15 @@ function AppCard({ app, release }: { app: App; release: AppRelease | null }) {
   return (
     <article className={`flex h-full flex-col justify-between rounded-[1.25rem] p-6 lg:p-8 ${app.tone}`}>
       <div>
+        <div className="mb-6 flex">
+          {app.art.map((src, i) => (
+            <Illustration
+              key={src}
+              src={src}
+              className={`w-24 rounded-2xl shadow-md ${i === 0 ? '-rotate-3' : '-ml-5 rotate-6'}`}
+            />
+          ))}
+        </div>
         <p className="label-mono !text-inherit opacity-75">{app.audience}</p>
         <h3 className="mt-5 font-display text-[1.9rem] font-extrabold leading-[1.02] tracking-[-0.01em]">
           {app.name}
