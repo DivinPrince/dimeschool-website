@@ -14,7 +14,10 @@ export const metadata: Metadata = createPageMetadata({
 
 export default async function DownloadPage() {
   const apps = await Promise.all(
-    siteConfig.apps.map(async (app) => ({ app, release: await getRelease(app.manifest) })),
+    siteConfig.apps.map(async (app) => ({
+      app,
+      release: await getRelease(app.manifest, app.latest),
+    })),
   );
 
   return (

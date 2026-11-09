@@ -14,7 +14,9 @@ const MARKEASE_URL = "https://markease-v2.dimeschool.tech";
 const DEMO_URL = "https://cal.com/dimeincltd/dimeschool-demo";
 
 // Each release workflow publishes a stable.json here listing its current
-// installers; /download reads them, so new releases need no site change.
+// installers, and a copy of each under a fixed latest/ name that always serves
+// the newest one. /download reads stable.json when the site builds and links
+// the latest/ copies, so its downloads stay current between rebuilds.
 const RELEASES_URL = "https://releases.dimeschool.tech";
 
 export const siteConfig = {
@@ -507,8 +509,9 @@ export const siteConfig = {
   },
 
   // Downloads (/download). `manifest` is the app's stable.json on the release
-  // bucket; `web` is where the same app opens in a browser; `art` shows who
-  // it's for.
+  // bucket; `latest` is each installer's fixed link that always serves the
+  // newest release; `web` is where the same app opens in a browser; `art`
+  // shows who it's for.
   apps: [
     {
       id: "dimeschool",
@@ -517,6 +520,7 @@ export const siteConfig = {
       description: "The whole school on your phone: classes, attendance, the gradebook, and library loans.",
       web: APP_URL,
       manifest: `${RELEASES_URL}/dimeschool/stable.json`,
+      latest: { android: `${RELEASES_URL}/dimeschool/latest/Dimeschool-android.apk` },
       tone: "bg-blue text-white",
       art: ["/illustrations/staff.svg"],
     },
@@ -527,6 +531,7 @@ export const siteConfig = {
       description: "Grades the moment they're published, report cards, assessments, and the e-book library.",
       web: PORTAL_URL,
       manifest: `${RELEASES_URL}/portal/stable.json`,
+      latest: { android: `${RELEASES_URL}/portal/latest/Portal-android.apk` },
       tone: "bg-green text-white",
       art: ["/illustrations/parent.svg", "/illustrations/student.svg"],
     },
@@ -537,6 +542,12 @@ export const siteConfig = {
       description: "AI marking for handwritten answer papers, on the desktop or your phone.",
       web: MARKEASE_URL,
       manifest: `${RELEASES_URL}/markease/stable.json`,
+      latest: {
+        android: `${RELEASES_URL}/markease/latest/Markease-android.apk`,
+        windows: `${RELEASES_URL}/markease/latest/Markease-windows-x64-setup.exe`,
+        macAppleSilicon: `${RELEASES_URL}/markease/latest/Markease-macos-arm64.dmg`,
+        macIntel: `${RELEASES_URL}/markease/latest/Markease-macos-x64.dmg`,
+      },
       tone: "bg-yellow text-foreground",
       art: ["/illustrations/teacher.svg"],
     },
